@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(body: Center(child: const Text("Это тест"))),
+      home: Scaffold(body: Center(child: const Text("А вот это, ТЕСТИЩЕ!"))),
     );
   }
 }
