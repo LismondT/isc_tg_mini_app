@@ -21,6 +21,13 @@ jobs:
 
     # Сборка web версии
     - run: flutter build web --release
+    
+    - name: Debug Connection
+      run: |
+        echo "Host: ${{ secrets.VPS_HOST }}"
+        echo "User: ${{ secrets.VPS_USER }}"
+        echo "Port: ${{ secrets.VPS_PORT || '22' }}"
+        echo "Password length: ${#VPS_PASSWORD}"  # Проверка длины пароля
 
     # Деплой на VPS через SSH
     - name: Deploy to VPS
