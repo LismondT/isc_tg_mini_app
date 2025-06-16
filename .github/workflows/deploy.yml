@@ -20,7 +20,7 @@ jobs:
     - run: flutter pub get
 
     # Сборка web версии
-    - run: flutter build web --release --web-renderer html
+    - run: flutter build web --release
 
     # Деплой на VPS через SSH
     - name: Deploy to VPS
