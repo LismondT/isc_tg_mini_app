@@ -4,38 +4,44 @@ import 'package:flame/events.dart';
 import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
-import 'package:flutter/cupertino.dart';
-import 'game.dart';
+import 'package:flutter/material.dart';
+import 'package:tg_mini_app/game/enemy.dart';
+import 'package:tg_mini_app/game/player.dart';
 
 class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
-  late Player player;
+  final int level;
+  late final Player player;
+
+  int killedEnemys = 0;
+
+  MainGame(this.level);
 
   @override
   FutureOr<void> onLoad() async {
-    final parallax = await loadParallaxComponent(
-      [ParallaxImageData('stars.png')],
-      baseVelocity: Vector2(0, -5),
-      repeat: ImageRepeat.repeat,
-      velocityMultiplierDelta: Vector2(0, 5),
-    );
-    add(parallax);
-
-    player = Player()
-      ..position = size / 2
-      ..width = 50
-      ..height = 100
-      ..anchor = Anchor.center;
-    add(player);
+    player = Player();
 
     add(
       SpawnComponent(
         factory: (index) {
           return Enemy();
         },
-        period: 1,
+        period: 1 / level,
         area: Rectangle.fromLTWH(0, 0, size.x, -Enemy.enemySize),
       ),
     );
+
+    final parallax = await loadParallaxComponent(
+      [
+        ParallaxImageData('stars.png'),
+        ParallaxImageData('stars.png'),
+        ParallaxImageData('stars.png'),
+      ],
+      baseVelocity: Vector2(0, -5),
+      repeat: ImageRepeat.repeat,
+      velocityMultiplierDelta: Vector2(2, 5),
+    );
+    add(parallax);
+    add(player);
   }
 
   @override
@@ -51,5 +57,17 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   @override
   void onPanEnd(DragEndInfo info) {
     player.stopShooting();
+  }
+
+  void win() {
+    overlays.add('levelComplete');
+  }
+
+  void onEnemyKill() {
+    killedEnemys++;
+
+    if (killedEnemys > 10) {
+      win();
+    }
   }
 }

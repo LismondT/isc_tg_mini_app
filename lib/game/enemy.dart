@@ -46,6 +46,7 @@ class Enemy extends SpriteAnimationComponent
       removeFromParent();
       other.removeFromParent();
       game.add(Explosion(position: position));
+      game.onEnemyKill();
     }
   }
 }
