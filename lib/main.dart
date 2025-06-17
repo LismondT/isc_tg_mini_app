@@ -83,21 +83,18 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
   void _centerCurrentLevel({bool animate = true}) {
     final gameProgress = Provider.of<GameProgress>(context, listen: false);
-    final currentLevelIndex = gameProgress.currentLevel + 1;
+    final currentLevelIndex = gameProgress.currentLevel - 1;
 
     final viewportWidth = MediaQuery.of(context).size.width;
     final totalContentWidth =
         gameProgress.totalLevels * (_itemWidth + _itemSpacing);
 
-    double targetOffset =
-        currentLevelIndex * (_itemWidth + _itemSpacing) -
-        (viewportWidth / 2) +
-        (_itemWidth / 2);
+    double targetOffset = currentLevelIndex * (_itemWidth + _itemSpacing);
 
     // Позволяет проскроллить в обе стороны
     final maxScroll =
         totalContentWidth + _horizontalPadding() * 2 - viewportWidth;
-    targetOffset = targetOffset.clamp(0.0, maxScroll);
+    //targetOffset = targetOffset.clamp(0.0, maxScroll);
 
     if (animate) {
       setState(() => _isAnimating = true);
@@ -163,8 +160,9 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Select Level'),
+        title: const Text('Выбор ревня'),
         automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -173,18 +171,14 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
             height: 100,
             child: Stack(
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: SizedBox(
-                    width:
-                        totalContentWidth + horizontalPadding * 2, // 👈 важно
-                    height: 100,
-                    child: CustomPaint(
-                      painter: LevelConnectorPainter(
-                        completedLevels: completedLevels,
-                        animatedLevel: _animatedLevel,
-                        animationValue: _animationController.value,
-                      ),
+                SizedBox(
+                  width: totalContentWidth + horizontalPadding * 2, // 👈 важно
+                  height: 100,
+                  child: CustomPaint(
+                    painter: LevelConnectorPainter(
+                      completedLevels: completedLevels,
+                      animatedLevel: _animatedLevel,
+                      animationValue: _animationController.value,
                     ),
                   ),
                 ),
@@ -235,7 +229,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                         ),
                       );
                     },
-                    child: const Text('Start Level'),
+                    child: const Text('да я фембой'),
                   ),
           ),
         ],
@@ -251,7 +245,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
   }) {
     return Container(
       width: _itemWidth,
-      margin: EdgeInsets.symmetric(horizontal: _itemSpacing / 2),
+      margin: EdgeInsets.only(right: _itemSpacing),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -294,7 +288,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
-                'Current',
+                'я тута',
                 style: TextStyle(color: Colors.blue[800], fontSize: 12),
               ),
             ),
