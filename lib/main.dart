@@ -83,7 +83,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
   void _centerCurrentLevel({bool animate = true}) {
     final gameProgress = Provider.of<GameProgress>(context, listen: false);
-    final currentLevelIndex = gameProgress.currentLevel - 1;
+    final currentLevelIndex = gameProgress.currentLevel + 1;
 
     final viewportWidth = MediaQuery.of(context).size.width;
     final totalContentWidth =
@@ -137,8 +137,16 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
           _animatedLevel = null;
           _isAnimating = false;
         });
+
+        // ⬇️ ВАЖНО: сначала обновляем прогресс
         gameProgress.completeLevel(completedLevel);
-        _centerCurrentLevel();
+
+        // ⬇️ А теперь ждём завершения кадра, чтобы currentLevel обновился
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) {
+            _centerCurrentLevel(); // теперь работает корректно
+          }
+        });
       }
     });
   }
@@ -149,6 +157,9 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
     final totalLevels = gameProgress.totalLevels;
     final currentLevel = gameProgress.currentLevel;
     final completedLevels = gameProgress.highestLevelCompleted;
+    final horizontalPadding =
+        MediaQuery.of(context).size.width / 2 - _itemWidth / 2;
+    final totalContentWidth = totalLevels * (_itemWidth + _itemSpacing);
 
     return Scaffold(
       appBar: AppBar(
@@ -165,10 +176,11 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                 Align(
                   alignment: Alignment.centerLeft,
                   child: SizedBox(
-                    width: totalLevels * (_itemWidth + _itemSpacing),
+                    width:
+                        totalContentWidth + horizontalPadding * 2, // 👈 важно
+                    height: 100,
                     child: CustomPaint(
                       painter: LevelConnectorPainter(
-                        levelCount: totalLevels,
                         completedLevels: completedLevels,
                         animatedLevel: _animatedLevel,
                         animationValue: _animationController.value,
@@ -298,13 +310,11 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 }
 
 class LevelConnectorPainter extends CustomPainter {
-  final int levelCount;
   final int completedLevels;
   final int? animatedLevel;
   final double animationValue;
 
   LevelConnectorPainter({
-    required this.levelCount,
     required this.completedLevels,
     this.animatedLevel,
     required this.animationValue,
@@ -322,31 +332,19 @@ class LevelConnectorPainter extends CustomPainter {
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke;
 
-    final itemSpacing = 20.0;
-    final itemWidth = 80.0;
-    final totalSpacing = itemWidth + itemSpacing;
     final centerY = size.height / 2;
 
-    // Draw base line
-    canvas.drawLine(Offset(0, centerY), Offset(size.width, centerY), paint);
+    canvas.drawLine(
+      Offset(size.width / 2, centerY),
+      Offset(size.width, centerY),
+      paint,
+    );
 
-    // Draw completed line
-    if (completedLevels > 0) {
-      double endX = (completedLevels * totalSpacing).clamp(0.0, size.width);
-
-      if (animatedLevel != null && animatedLevel == completedLevels) {
-        endX = ((completedLevels - 1 + animationValue) * totalSpacing).clamp(
-          0.0,
-          size.width,
-        );
-      }
-
-      canvas.drawLine(
-        Offset(0, centerY),
-        Offset(endX, centerY),
-        completedPaint,
-      );
-    }
+    canvas.drawLine(
+      Offset(0, centerY),
+      Offset(size.width / 2, centerY),
+      completedPaint,
+    );
   }
 
   @override
