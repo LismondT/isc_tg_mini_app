@@ -15,7 +15,7 @@ final router = GoRouter(
           path: 'level/:levelId',
           builder: (context, state) {
             final levelId = int.parse(state.pathParameters['levelId']!);
-            return GameScreen(level: levelId, onLevelComplete: (a) => {});
+            return GameScreen(level: levelId);
           },
         ),
         GoRoute(

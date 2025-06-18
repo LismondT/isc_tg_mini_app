@@ -6,6 +6,7 @@ import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
 import 'package:tg_mini_app/game/enemy.dart';
+import 'package:tg_mini_app/game/level_complete_overlay.dart';
 import 'package:tg_mini_app/game/player.dart';
 
 class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
@@ -60,13 +61,14 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   void win() {
-    overlays.add('levelComplete');
+    paused = true;
+    overlays.add(LevelCompleteOverlay.id);
   }
 
   void onEnemyKill() {
     killedEnemys++;
 
-    if (killedEnemys > 10) {
+    if (killedEnemys > 0) {
       win();
     }
   }

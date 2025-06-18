@@ -152,6 +152,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                         isCompleted: isCompleted,
                         isCurrent: isCurrent,
                         isLocked: isLocked,
+                        theme: Theme.of(context).colorScheme,
                       );
                     },
                   ),
@@ -195,6 +196,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
     required bool isCompleted,
     required bool isCurrent,
     required bool isLocked,
+    required ColorScheme theme,
   }) {
     return Container(
       width: _itemWidth,
@@ -207,19 +209,19 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
             height: isCurrent ? 60 : 50,
             decoration: BoxDecoration(
               color: isCurrent
-                  ? Colors.blue[400]
+                  ? theme.primary
                   : isCompleted
                   ? Colors.green[400]
                   : Colors.grey[300],
               shape: BoxShape.circle,
               border: Border.all(
-                color: isCurrent ? Colors.blue[800]! : Colors.transparent,
+                color: isCurrent ? theme.primary : Colors.transparent,
                 width: 2,
               ),
               boxShadow: isCurrent
                   ? [
                       BoxShadow(
-                        color: const Color.fromARGB(255, 24, 36, 47),
+                        color: theme.primary,
                         blurRadius: 10,
                         spreadRadius: 2,
                       ),
@@ -242,7 +244,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
                 'Вы здесь',
-                style: TextStyle(color: Colors.blue[800], fontSize: 12),
+                style: TextStyle(color: theme.onBackground, fontSize: 12),
               ),
             ),
           if (isLocked)
