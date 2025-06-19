@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flame/components.dart';
 
-import 'game.dart';
+import '../../game.dart';
 
 class Player extends SpriteComponent with HasGameReference<MainGame> {
   Player() : super(size: Vector2(100, 150), anchor: Anchor.center);

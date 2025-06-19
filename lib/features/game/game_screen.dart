@@ -22,7 +22,7 @@ class _GameScreenState extends State<GameScreen> {
         overlayBuilderMap: {
           LevelCompleteOverlay.id: (_, MainGame game) => LevelCompleteOverlay(
             currentLevel: game.level,
-            totalLevels: Globals.levels,
+            totalLevels: Globals.levelsCount,
             obtainedLetter: Globals.cleanPhrase[game.level - 1],
           ),
         },

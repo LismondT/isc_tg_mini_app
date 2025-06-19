@@ -1,0 +1,34 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "duration": 10,
+      "waves": [
+        {
+          "start_time": 5,
+          "end_time": 10,
+          "enemies": [
+            {
+              "img": "",
+              "count": 5,
+              "movement": "line",
+              "bullet_pattern": null
+            }
+          ]
+        },
+        {
+          "start_time": 30,
+          "end_time": 60,
+          "enemies": [
+            {
+              "img": "",
+              "count": 10,
+              "movement": "line",
+              "bullet_pattern": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

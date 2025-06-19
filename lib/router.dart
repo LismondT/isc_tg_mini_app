@@ -26,7 +26,7 @@ final router = GoRouter(
             return PhraseProgressScreen(
               unlockedLetters: levelId - 1,
               fullPhrase: Globals.phrase,
-              totalLevels: Globals.levels,
+              totalLevels: Globals.levelsCount,
             );
           },
         ),

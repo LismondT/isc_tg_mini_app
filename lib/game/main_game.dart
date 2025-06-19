@@ -6,17 +6,15 @@ import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
 import 'package:tg_mini_app/game/components/ui/level_progress_bar.dart';
-import 'package:tg_mini_app/game/enemy.dart';
+import 'package:tg_mini_app/game/components/enemies/enemy.dart';
 import 'package:tg_mini_app/game/overlays/level_complete_overlay.dart';
-import 'package:tg_mini_app/game/player.dart';
+import 'package:tg_mini_app/game/components/player/player.dart';
 
 class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   final int level;
   late final Player player;
   late LevelProgressBar progressBar;
   final double levelDuration = 10.0;
-
-  int killedEnemys = 0;
 
   MainGame(this.level);
 
