@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tg_mini_app/core/game_progress.dart';
-import 'package:tg_mini_app/core/globals.dart';
-import 'package:tg_mini_app/features/main_app.dart';
-import 'package:tg_mini_app/game/level_loader.dart';
+
+import 'package:tg_mini_app/core/core.dart';
+import 'package:tg_mini_app/features/features.dart';
+import 'package:tg_mini_app/game/game.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

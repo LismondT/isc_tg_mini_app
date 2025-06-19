@@ -2,7 +2,7 @@ import 'package:tg_mini_app/game/models/wave.dart';
 
 class Level {
   final int id;
-  final int duration;
+  final double duration;
   List<Wave> waves;
 
   Level({required this.id, required this.duration, required this.waves});
@@ -10,7 +10,7 @@ class Level {
   factory Level.fromJson(Map<String, dynamic> json) {
     return Level(
       id: json['id'],
-      duration: json['duration'],
+      duration: json['duration'].toDouble(),
       waves: (json['waves'] as List).map((e) => Wave.fromJson(e)).toList(),
     );
   }

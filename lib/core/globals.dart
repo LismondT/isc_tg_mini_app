@@ -1,7 +1,7 @@
 import 'package:tg_mini_app/game/models/level.dart';
 
 class Globals {
-  static const String phrase = 'привет, мир!';
+  static const String phrase = 'рыба';
   static final String cleanPhrase = phrase.replaceAll(' ', '');
   static final levelsCount = cleanPhrase.length;
 

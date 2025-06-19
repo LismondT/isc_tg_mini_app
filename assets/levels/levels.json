@@ -5,8 +5,38 @@
       "duration": 10,
       "waves": [
         {
-          "start_time": 5,
+          "start_time": 0,
           "end_time": 10,
+          "enemies": [
+            {
+              "img": "",
+              "count": 10,
+              "movement": "line",
+              "bullet_pattern": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "duration": 25,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 10,
+          "enemies": [
+            {
+              "img": "",
+              "count": 20,
+              "movement": "line",
+              "bullet_pattern": null
+            }
+          ]
+        },
+        {
+          "start_time": 15,
+          "end_time": 25,
           "enemies": [
             {
               "img": "",
@@ -15,14 +45,50 @@
               "bullet_pattern": null
             }
           ]
-        },
+        }
+      ]
+    },
+     {
+      "id": 3,
+      "duration": 25,
+      "waves": [
         {
-          "start_time": 30,
-          "end_time": 60,
+          "start_time": 0,
+          "end_time": 10,
           "enemies": [
             {
               "img": "",
-              "count": 10,
+              "count": 30,
+              "movement": "line",
+              "bullet_pattern": null
+            }
+          ]
+        },
+        {
+          "start_time": 12,
+          "end_time": 30,
+          "enemies": [
+            {
+              "img": "",
+              "count": 40,
+              "movement": "line",
+              "bullet_pattern": null
+            }
+          ]
+        }
+      ]
+    },
+     {
+      "id": 4,
+      "duration": 10,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 10,
+          "enemies": [
+            {
+              "img": "",
+              "count": 50,
               "movement": "line",
               "bullet_pattern": null
             }

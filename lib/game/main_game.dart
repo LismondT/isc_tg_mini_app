@@ -1,37 +1,34 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
-import 'package:tg_mini_app/game/components/ui/level_progress_bar.dart';
-import 'package:tg_mini_app/game/components/enemies/enemy.dart';
-import 'package:tg_mini_app/game/overlays/level_complete_overlay.dart';
-import 'package:tg_mini_app/game/components/player/player.dart';
+
+import 'package:tg_mini_app/core/core.dart';
+import 'package:tg_mini_app/game/game.dart';
 
 class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
-  final int level;
+  final int levelNum;
+  late final Level level;
   late final Player player;
   late LevelProgressBar progressBar;
-  final double levelDuration = 10.0;
 
-  MainGame(this.level);
+  double gameTimer = 0;
+
+  List<Enemy> activeEnemies = [];
+  List<ScheduledEnemy> scheduledEnemies = [];
+  int currentSpawnIndex = 0;
+
+  MainGame(this.levelNum);
 
   @override
   FutureOr<void> onLoad() async {
-    player = Player();
-    progressBar = LevelProgressBar(maxTime: levelDuration);
+    level = Globals.levels[levelNum - 1];
 
-    add(
-      SpawnComponent(
-        factory: (index) {
-          return Enemy();
-        },
-        period: 1 / level,
-        area: Rectangle.fromLTWH(0, 0, size.x, -Enemy.enemySize),
-      ),
-    );
+    player = Player();
+    progressBar = LevelProgressBar(maxTime: level.duration);
 
     final parallax = await loadParallaxComponent(
       [
@@ -47,11 +44,20 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
     add(parallax);
     add(player);
     add(progressBar);
+
+    scheduleEnemies();
   }
 
   @override
   void update(double dt) {
     super.update(dt);
+    gameTimer += dt;
+
+    while (currentSpawnIndex < scheduledEnemies.length &&
+        scheduledEnemies[currentSpawnIndex].spawnTime <= gameTimer) {
+      spawnEnemy(scheduledEnemies[currentSpawnIndex]);
+      currentSpawnIndex++;
+    }
 
     if (progressBar.isComplete) {
       win();
@@ -79,4 +85,34 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   void onEnemyKill() {}
+
+  void scheduleEnemies() {
+    scheduledEnemies.clear();
+    currentSpawnIndex = 0;
+
+    for (final wave in level.waves) {
+      for (final group in wave.enemies) {
+        final spawnTimes = wave.getSpawnTimes(group);
+        for (int i = 0; i < group.count; i++) {
+          scheduledEnemies.add(
+            ScheduledEnemy(
+              spawnTime: spawnTimes[i],
+              imagePath: group.img,
+              movementPattern: group.movement,
+              bulletPattern: group.bulletPattern,
+            ),
+          );
+        }
+      }
+    }
+
+    scheduledEnemies.sort((a, b) => a.spawnTime.compareTo(b.spawnTime));
+  }
+
+  void spawnEnemy(ScheduledEnemy scheduledEnemi) {
+    final x = Random.secure().nextInt(size.x as int) as double;
+    final enemy = Enemy(position: Vector2(x, -Enemy.enemySize));
+    add(enemy);
+    activeEnemies.add(enemy);
+  }
 }

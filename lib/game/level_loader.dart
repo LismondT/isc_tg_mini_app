@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:tg_mini_app/game/models/level.dart';
+import 'package:tg_mini_app/game/game.dart';
 
 class LevelLoader {
   static Future<List<Level>> loadLevels() async {

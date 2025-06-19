@@ -1,8 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:tg_mini_app/core/globals.dart';
+import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/game/game.dart';
-import 'package:tg_mini_app/game/overlays/level_complete_overlay.dart';
 
 class GameScreen extends StatefulWidget {
   final int level;
@@ -21,9 +20,9 @@ class _GameScreenState extends State<GameScreen> {
         game: MainGame(widget.level),
         overlayBuilderMap: {
           LevelCompleteOverlay.id: (_, MainGame game) => LevelCompleteOverlay(
-            currentLevel: game.level,
+            currentLevel: game.levelNum,
             totalLevels: Globals.levelsCount,
-            obtainedLetter: Globals.cleanPhrase[game.level - 1],
+            obtainedLetter: Globals.cleanPhrase[game.levelNum - 1],
           ),
         },
       ),

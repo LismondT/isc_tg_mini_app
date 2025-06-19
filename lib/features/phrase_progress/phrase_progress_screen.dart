@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tg_mini_app/router.dart';
 
 class PhraseProgressScreen extends StatefulWidget {
   final int unlockedLetters; // Открытые буквы
@@ -138,16 +139,17 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
   }
 
   Widget _buildVictoryScreen() {
+    final theme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: Colors.grey[900],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'ПОБЕДА!',
               style: TextStyle(
-                color: Colors.deepPurpleAccent,
+                color: theme.primary,
                 fontSize: 48,
                 fontWeight: FontWeight.bold,
               ),
@@ -156,21 +158,17 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
             Text(
               widget.fullPhrase,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 40),
             const Icon(Icons.celebration, color: Colors.yellow, size: 100),
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                router.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: theme.primary,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 40,
                   vertical: 15,

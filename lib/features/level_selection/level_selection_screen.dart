@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tg_mini_app/core/game_progress.dart';
+import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/router.dart';
 
 import 'level_connection_painter.dart';
