@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tg_mini_app/core/globals.dart';
 import 'package:tg_mini_app/features/game/game_screen.dart';
 import 'package:tg_mini_app/features/level_selection/level_selection_screen.dart';
 import 'package:tg_mini_app/features/phrase_progress/phrase_progress_screen.dart';
@@ -24,8 +25,8 @@ final router = GoRouter(
             final levelId = int.parse(state.pathParameters['levelId']!);
             return PhraseProgressScreen(
               unlockedLetters: levelId - 1,
-              fullPhrase: 'чо писать то фразу придумать нада, эх',
-              totalLevels: 35,
+              fullPhrase: Globals.phrase,
+              totalLevels: Globals.levels,
             );
           },
         ),

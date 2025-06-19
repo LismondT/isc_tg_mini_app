@@ -22,7 +22,6 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
   @override
   void initState() {
     super.initState();
-    // Проверяем, собрана ли вся фраза
     if (widget.unlockedLetters >= widget.fullPhrase.length) {
       _showVictoryScreen = true;
     }
@@ -87,6 +86,18 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
   }
 
   Widget _buildPhraseDisplay() {
+    int lettersUnlocked = widget.unlockedLetters;
+    int lettersToShow = 0;
+
+    for (int i = 0; i < widget.fullPhrase.length; i++) {
+      if (lettersUnlocked <= 0) break;
+
+      if (widget.fullPhrase[i] != ' ') {
+        lettersUnlocked--;
+      }
+      lettersToShow++;
+    }
+
     return Wrap(
       alignment: WrapAlignment.center,
       spacing: 8,
@@ -94,7 +105,7 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
       children: widget.fullPhrase.split('').asMap().entries.map((entry) {
         final index = entry.key;
         final char = entry.value;
-        final isUnlocked = index < widget.unlockedLetters;
+        final isUnlocked = index < lettersToShow;
 
         return Container(
           width: 40,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tg_mini_app/core/game_progress.dart';
-import 'package:tg_mini_app/features/game/game_screen.dart';
 import 'package:tg_mini_app/router.dart';
 
 import 'level_connection_painter.dart';
@@ -244,7 +243,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
                 'Вы здесь',
-                style: TextStyle(color: theme.onBackground, fontSize: 12),
+                style: TextStyle(color: theme.onSurface, fontSize: 12),
               ),
             ),
           if (isLocked)

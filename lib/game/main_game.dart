@@ -5,13 +5,16 @@ import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
+import 'package:tg_mini_app/game/components/ui/level_progress_bar.dart';
 import 'package:tg_mini_app/game/enemy.dart';
-import 'package:tg_mini_app/game/level_complete_overlay.dart';
+import 'package:tg_mini_app/game/overlays/level_complete_overlay.dart';
 import 'package:tg_mini_app/game/player.dart';
 
 class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   final int level;
   late final Player player;
+  late LevelProgressBar progressBar;
+  final double levelDuration = 10.0;
 
   int killedEnemys = 0;
 
@@ -20,6 +23,7 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   @override
   FutureOr<void> onLoad() async {
     player = Player();
+    progressBar = LevelProgressBar(maxTime: levelDuration);
 
     add(
       SpawnComponent(
@@ -41,8 +45,19 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
       repeat: ImageRepeat.repeat,
       velocityMultiplierDelta: Vector2(2, 5),
     );
+
     add(parallax);
     add(player);
+    add(progressBar);
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    if (progressBar.isComplete) {
+      win();
+    }
   }
 
   @override
@@ -65,11 +80,5 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
     overlays.add(LevelCompleteOverlay.id);
   }
 
-  void onEnemyKill() {
-    killedEnemys++;
-
-    if (killedEnemys > 0) {
-      win();
-    }
-  }
+  void onEnemyKill() {}
 }
