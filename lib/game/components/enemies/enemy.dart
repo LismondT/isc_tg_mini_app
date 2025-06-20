@@ -12,15 +12,13 @@ class Enemy extends SpriteComponent
   static const enemySize = 10.0;
   int health = 10;
   bool isHit = false;
-  final double knockbackForce = 20.0; // Сила отдачи
+  final double knockbackForce = 10.0; // Сила отдачи
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
     sprite = await Sprite.load('enemies/Virus_0003.png');
     add(RectangleHitbox());
-
-    debugMode = true;
   }
 
   @override
@@ -33,7 +31,7 @@ class Enemy extends SpriteComponent
     }
 
     if (position.y > game.size.y) {
-      position.y = -size.y;
+      removeFromParent();
     }
   }
 

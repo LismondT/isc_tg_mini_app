@@ -28,7 +28,6 @@ class Player extends SpriteComponent
       autoStart: false,
     );
     game.add(_bulletSpawner);
-    debugMode = true;
     add(
       RectangleHitbox(
         position: size / 2,
