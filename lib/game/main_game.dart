@@ -6,6 +6,7 @@ import 'package:flame/game.dart';
 
 import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/game/game.dart';
+import 'package:tg_mini_app/router.dart';
 
 class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   final int levelNum;
@@ -28,7 +29,10 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
     player = Player();
     progressBar = LevelProgressBar(maxTime: level.duration);
     add(
-      SpriteComponent(sprite: await Sprite.load('background.jpg'), size: size),
+      SpriteComponent(
+        sprite: await Sprite.load('background.jpg'),
+        autoResize: true,
+      ),
     );
     add(player);
     add(progressBar);
@@ -68,7 +72,7 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   void win() {
-    paused = true;
+    pauseEngine();
     overlays.add(LevelCompleteOverlay.id);
   }
 
@@ -102,5 +106,24 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
     final enemy = Enemy(position: Vector2(x, -Enemy.enemySize));
     add(enemy);
     activeEnemies.add(enemy);
+  }
+
+  void resetGame() async {
+    final result = await router.push('/level/$levelNum');
+    router.pop(result);
+
+    // for (final enemy in activeEnemies) {
+    //   remove(enemy);
+    // }
+    // activeEnemies.clear();
+    // scheduleEnemies();
+    // player.resetPosition();
+    // overlays.clear();
+    // resumeEngine();
+  }
+
+  void gameOver() {
+    pauseEngine();
+    overlays.add(GameOverOverlay.id);
   }
 }

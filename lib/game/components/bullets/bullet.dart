@@ -4,7 +4,7 @@ import 'package:tg_mini_app/game/game.dart';
 
 class Bullet extends SpriteAnimationComponent with HasGameReference<MainGame> {
   Bullet({super.position})
-    : super(size: Vector2(25, 50), anchor: Anchor.center);
+    : super(size: Vector2(15, 35), anchor: Anchor.center);
 
   @override
   Future<void> onLoad() async {

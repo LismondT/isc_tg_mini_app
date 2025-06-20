@@ -24,6 +24,8 @@ class _GameScreenState extends State<GameScreen> {
             totalLevels: Globals.levelsCount,
             obtainedLetter: Globals.cleanPhrase[game.levelNum - 1],
           ),
+          GameOverOverlay.id: (_, MainGame game) =>
+              GameOverOverlay(game: game, context: context),
         },
       ),
     );

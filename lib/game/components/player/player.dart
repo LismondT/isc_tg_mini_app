@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
 import '../../game.dart';
 
-class Player extends SpriteComponent with HasGameReference<MainGame> {
-  Player() : super(size: Vector2(100, 150), anchor: Anchor.center);
+class Player extends SpriteComponent
+    with HasGameReference<MainGame>, CollisionCallbacks {
+  Player() : super(size: Vector2(50, 100), anchor: Anchor.center);
 
   late final SpawnComponent _bulletSpawner;
 
@@ -18,7 +20,7 @@ class Player extends SpriteComponent with HasGameReference<MainGame> {
     position = game.size / 2;
 
     _bulletSpawner = SpawnComponent(
-      period: .2,
+      period: 0.25,
       selfPositioning: true,
       factory: (index) {
         return Bullet(position: position + Vector2(0, -height / 2));
@@ -26,6 +28,26 @@ class Player extends SpriteComponent with HasGameReference<MainGame> {
       autoStart: false,
     );
     game.add(_bulletSpawner);
+    debugMode = true;
+    add(
+      RectangleHitbox(
+        position: size / 2,
+        size: size / 4,
+        anchor: Anchor.center,
+      ),
+    );
+  }
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+
+    if (other is Enemy) {
+      game.gameOver();
+    }
   }
 
   void move(Vector2 delta) {
@@ -38,5 +60,9 @@ class Player extends SpriteComponent with HasGameReference<MainGame> {
 
   void stopShooting() {
     _bulletSpawner.timer.stop();
+  }
+
+  void resetPosition() {
+    position = game.size / 2;
   }
 }
