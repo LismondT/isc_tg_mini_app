@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
@@ -12,7 +13,8 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   final int levelNum;
   late final Level level;
   late final Player player;
-  late LevelProgressBar progressBar;
+  late final LevelProgressBar progressBar;
+  late final SpriteComponent background;
 
   double gameTimer = 0;
 
@@ -28,12 +30,11 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
 
     player = Player();
     progressBar = LevelProgressBar(maxTime: level.duration);
-    add(
-      SpriteComponent(
-        sprite: await Sprite.load('background.jpg'),
-        autoResize: true,
-      ),
+    background = SpriteComponent(
+      sprite: await Sprite.load('background.jpg'),
+      autoResize: true,
     );
+    add(background);
     add(player);
     add(progressBar);
 
@@ -111,19 +112,38 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   void resetGame() async {
     final result = await router.push('/level/$levelNum');
     router.pop(result);
-
-    // for (final enemy in activeEnemies) {
-    //   remove(enemy);
-    // }
-    // activeEnemies.clear();
-    // scheduleEnemies();
-    // player.resetPosition();
-    // overlays.clear();
-    // resumeEngine();
   }
 
   void gameOver() {
     pauseEngine();
     overlays.add(GameOverOverlay.id);
+  }
+
+  void shakeScreen({double intensity = 10.0, double duration = 0.2}) {
+    final shakeEffect = SequenceEffect(
+      [
+        MoveEffect.by(
+          Vector2(intensity, intensity),
+          EffectController(duration: duration / 4, alternate: true),
+        ),
+        MoveEffect.by(
+          Vector2(-intensity, -intensity),
+          EffectController(duration: duration / 4, alternate: true),
+        ),
+        MoveEffect.by(
+          Vector2(intensity, -intensity),
+          EffectController(duration: duration / 4, alternate: true),
+        ),
+        MoveEffect.by(
+          Vector2(-intensity, intensity),
+          EffectController(duration: duration / 4, alternate: true),
+        ),
+      ],
+      onComplete: () {
+        background.position = Vector2.zero();
+      },
+    );
+
+    background.add(shakeEffect);
   }
 }
