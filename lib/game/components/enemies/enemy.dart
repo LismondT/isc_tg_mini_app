@@ -2,25 +2,19 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:tg_mini_app/game/game.dart';
 
-class Enemy extends SpriteAnimationComponent
+class Enemy extends SpriteComponent
     with HasGameReference<MainGame>, CollisionCallbacks {
   Enemy({super.position})
     : super(size: Vector2.all(enemySize), anchor: Anchor.center);
 
   static const enemySize = 50.0;
+  int health = 10;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
 
-    animation = await game.loadSpriteAnimation(
-      'enemy.png',
-      SpriteAnimationData.sequenced(
-        amount: 4,
-        stepTime: .2,
-        textureSize: Vector2.all(16),
-      ),
-    );
+    sprite = await Sprite.load('enemies/Virus_0003.png');
 
     add(RectangleHitbox());
   }
@@ -32,7 +26,8 @@ class Enemy extends SpriteAnimationComponent
     position.y += dt * 250;
 
     if (position.y > game.size.y) {
-      removeFromParent();
+      //removeFromParent();
+      position.y = -enemySize;
     }
   }
 
@@ -43,9 +38,17 @@ class Enemy extends SpriteAnimationComponent
   ) {
     super.onCollisionStart(intersectionPoints, other);
     if (other is Bullet) {
-      removeFromParent();
-      other.removeFromParent();
-      game.add(Explosion(position: position));
+      onHit(other);
     }
+  }
+
+  void onHit(Bullet bullet) {
+    bullet.removeFromParent();
+    onDie();
+  }
+
+  void onDie() {
+    removeFromParent();
+    game.add(Explosion(position: position));
   }
 }
