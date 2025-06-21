@@ -14,8 +14,13 @@ class Enemy extends SpriteComponent
     this.movement = 'line',
     this.speed = 200,
     this.health = 1,
-  }) : super(anchor: Anchor.center);
+  }) : super(anchor: Anchor.center) {
+    id = count;
+    count++;
+  }
 
+  static int count = 0;
+  late final int id;
   final String movement;
   final double speed;
   bool isRight = false;
@@ -96,10 +101,8 @@ class Enemy extends SpriteComponent
             game.size.x * 0.3; // Размах колебаний (30% ширины экрана)
         final frequency = 0.5; // Частота колебаний
 
-        // Обновляем фазу движения
         _movementPhase += dt * frequency;
 
-        // Вычисляем новую позицию по синусоиде
         final centerX = game.size.x / 2; // Центр экрана по горизонтали
         position.x = centerX + sin(_movementPhase) * amplitude;
 
@@ -179,7 +182,13 @@ class Enemy extends SpriteComponent
   }
 
   void onDie() {
+    game.add(Explosion(position: position, size: size));
+    //game.activeEnemies.remove(this);
     removeFromParent();
-    game.add(Explosion(position: position));
+  }
+
+  void onGameOver() {
+    game.add(Explosion(position: position, size: size));
+    removeFromParent();
   }
 }

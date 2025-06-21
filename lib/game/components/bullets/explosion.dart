@@ -3,12 +3,8 @@ import 'package:tg_mini_app/game/main_game.dart';
 
 class Explosion extends SpriteAnimationComponent
     with HasGameReference<MainGame> {
-  Explosion({super.position})
-    : super(
-        size: Vector2.all(150),
-        anchor: Anchor.center,
-        removeOnFinish: true,
-      );
+  Explosion({super.position, super.size})
+    : super(anchor: Anchor.center, removeOnFinish: true);
 
   @override
   Future<void> onLoad() async {

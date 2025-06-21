@@ -3,13 +3,12 @@ import 'package:provider/provider.dart';
 
 import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/features/features.dart';
-import 'package:tg_mini_app/game/game.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
-    Globals.levels = await LevelLoader.loadLevels();
+    await Globals.load();
   } catch (e) {
     print(e);
   }

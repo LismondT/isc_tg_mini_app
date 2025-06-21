@@ -76,14 +76,14 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
     _animationController.reset();
 
-    _animationController.forward().then((_) {
+    _animationController.forward().then((_) async {
       if (mounted) {
         setState(() {
           _animatedLevel = null;
           _isAnimating = false;
         });
 
-        gameProgress.completeLevel(completedLevel);
+        await gameProgress.completeLevel(completedLevel);
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted) {
@@ -106,9 +106,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Пройдите все уровни, чтобы получить промокод!'),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
+        title: Image.asset('assets/images/icon.png', fit: BoxFit.fitHeight),
       ),
       body: Column(
         children: [
@@ -210,7 +208,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
               color: isCurrent
                   ? theme.primary
                   : isCompleted
-                  ? Colors.green[400]
+                  ? Color(0xFF7AC6D4)
                   : Colors.grey[300],
               shape: BoxShape.circle,
               border: Border.all(

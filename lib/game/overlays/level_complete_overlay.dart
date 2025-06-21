@@ -18,13 +18,13 @@ class LevelCompleteOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
     return Material(
-      color: Colors.black.withOpacity(0.7),
+      color: Colors.black.withAlpha(125),
       child: Center(
         child: Container(
           width: MediaQuery.of(context).size.width * 0.8,
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: theme.primaryContainer,
+            color: theme.surface,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: theme.primary, width: 3),
           ),

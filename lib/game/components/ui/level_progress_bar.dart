@@ -28,7 +28,7 @@ class LevelProgressBar extends PositionComponent
 
     // Фон полоски прогресса
     final bgRect = Rect.fromLTWH(0, 0, width, height);
-    final bgPaint = Paint()..color = const Color(0xFF555555);
+    final bgPaint = Paint()..color = const Color.fromARGB(255, 47, 82, 63);
     canvas.drawRect(bgRect, bgPaint);
 
     // Заполненная часть
@@ -48,7 +48,7 @@ class LevelProgressBar extends PositionComponent
 
     // Обводка
     final borderPaint = Paint()
-      ..color = Colors.white
+      ..color = Color.fromARGB(255, 116, 189, 202)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
     canvas.drawRect(bgRect, borderPaint);

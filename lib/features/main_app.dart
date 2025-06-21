@@ -9,10 +9,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       title: 'Level Selection',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-        brightness: Brightness.light,
-      ),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Color(0xFF7BC19D)),
     );
   }
 }

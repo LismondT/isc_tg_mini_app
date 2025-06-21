@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tg_mini_app/core/globals.dart';
 import 'package:tg_mini_app/router.dart';
 
 class PhraseProgressScreen extends StatefulWidget {
@@ -46,8 +47,8 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: LinearProgressIndicator(
                 value: widget.unlockedLetters / widget.totalLevels,
-                backgroundColor: theme.primaryContainer,
-                color: theme.onPrimaryContainer,
+                backgroundColor: theme.secondaryContainer,
+                color: theme.secondary,
                 minHeight: 20,
               ),
             ),
@@ -108,14 +109,16 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
         final char = entry.value;
         final isUnlocked = index < lettersToShow;
 
+        final theme = Theme.of(context).colorScheme;
+
         return Container(
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: isUnlocked ? Colors.deepPurple : Colors.grey[800],
+            color: isUnlocked ? theme.primaryContainer : Colors.grey[800],
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isUnlocked ? Colors.deepPurpleAccent : Colors.grey,
+              color: isUnlocked ? theme.secondaryContainer : Colors.grey,
               width: 2,
             ),
           ),
@@ -127,7 +130,7 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
                   ? ' '
                   : '?',
               style: TextStyle(
-                color: isUnlocked ? Colors.white : Colors.grey,
+                color: isUnlocked ? theme.onPrimaryContainer : Colors.grey,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -140,43 +143,133 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
 
   Widget _buildVictoryScreen() {
     final theme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
+      backgroundColor: theme.surfaceVariant.withOpacity(0.3),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'ПОБЕДА!',
-              style: TextStyle(
-                color: theme.primary,
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30),
-            Text(
-              widget.fullPhrase,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 40),
-            const Icon(Icons.celebration, color: Colors.yellow, size: 100),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () {
-                router.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.primary,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40,
-                  vertical: 15,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Анимированная иконка победы
+              Icon(Icons.celebration, color: theme.primary, size: 100),
+              const SizedBox(height: 24),
+
+              // Заголовок
+              Text(
+                'ПОБЕДА!',
+                style: textTheme.displayMedium?.copyWith(
+                  color: theme.primary,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 10,
+                      color: theme.primary.withOpacity(0.3),
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
               ),
-              child: const Text('Завершить', style: TextStyle(fontSize: 18)),
-            ),
-          ],
+
+              const SizedBox(height: 32),
+
+              // Контейнер с фразой
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: theme.surface,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: theme.shadow.withOpacity(0.1),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Вы собрали фразу:',
+                      style: textTheme.titleLarge?.copyWith(
+                        color: theme.onSurface.withOpacity(0.8),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      widget.fullPhrase,
+                      textAlign: TextAlign.center,
+                      style: textTheme.headlineSmall?.copyWith(
+                        color: theme.onSurface,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              // Промокод (если есть)
+              if (Globals.promoCode.isNotEmpty) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.secondaryContainer,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Ваш промокод:',
+                        style: textTheme.titleMedium?.copyWith(
+                          color: theme.onSecondaryContainer,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        Globals.promoCode,
+                        style: textTheme.headlineMedium?.copyWith(
+                          color: theme.onSecondaryContainer,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 32),
+              ],
+
+              // Кнопка
+              FilledButton(
+                onPressed: () => router.pop(context),
+                style: FilledButton.styleFrom(
+                  backgroundColor: theme.primary,
+                  foregroundColor: theme.onPrimary,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 48,
+                    vertical: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Text(
+                  'Назад',
+                  style: textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.onPrimary,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
 
 import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/game/game.dart';
@@ -17,6 +18,7 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   late final SpriteComponent background;
 
   double gameTimer = 0;
+  bool isWin = false;
 
   List<Enemy> activeEnemies = [];
   List<ScheduledEnemy> scheduledEnemies = [];
@@ -59,12 +61,16 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
 
   @override
   void onPanUpdate(DragUpdateInfo info) {
-    player.move(info.delta.global);
+    if (!isWin) {
+      player.move(info.delta.global);
+    }
   }
 
   @override
   void onPanStart(DragStartInfo info) {
-    player.startShooting();
+    if (!isWin) {
+      player.startShooting();
+    }
   }
 
   @override
@@ -73,11 +79,31 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   void win() {
-    pauseEngine();
-    overlays.add(LevelCompleteOverlay.id);
-  }
+    isWin = true;
 
-  void onEnemyKill() {}
+    for (final enemy in activeEnemies) {
+      if (enemy.parent != null) {
+        enemy.onGameOver();
+      }
+    }
+    activeEnemies.clear();
+
+    player.add(
+      MoveEffect.by(
+        Vector2(0, -size.y - player.size.y),
+        EffectController(
+          duration: 1,
+          curve: Curves.easeInQuad,
+          alternate: false,
+        ),
+        onComplete: () {
+          player.position.y = -30;
+          removeWhere((c) => c is Explosion);
+          overlays.add(LevelCompleteOverlay.id);
+        },
+      ),
+    );
+  }
 
   void scheduleEnemies() {
     scheduledEnemies.clear();
@@ -124,12 +150,17 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
     router.pop(result);
   }
 
-  void gameOver() {
+  void gameOver() async {
+    add(Explosion(position: player.position, size: player.size));
+    remove(player);
+
+    await Future.delayed(Duration(seconds: 1));
+
     pauseEngine();
     overlays.add(GameOverOverlay.id);
   }
 
-  void shakeScreen({double intensity = 10.0, double duration = 0.2}) {
+  void shakeScreen({double intensity = 10.0, double duration = 0.15}) {
     final shakeEffect = SequenceEffect(
       [
         MoveEffect.by(

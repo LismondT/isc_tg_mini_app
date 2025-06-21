@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:tg_mini_app/game/game.dart';
 
@@ -25,6 +26,14 @@ class Player extends SpriteComponent
     sprite = await game.loadSprite('player/player1.png');
 
     position = game.size / 2;
+    position.y = game.size.y + 100;
+
+    add(
+      MoveEffect.to(
+        Vector2(game.size.x / 2, game.size.y * 2 / 3),
+        EffectController(duration: 0.5, curve: Curves.decelerate),
+      ),
+    );
 
     _bulletSpawner = SpawnComponent(
       period: 0.25,

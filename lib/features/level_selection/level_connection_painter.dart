@@ -19,7 +19,7 @@ class LevelConnectorPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     final completedPaint = Paint()
-      ..color = Colors.green
+      ..color = Color(0xFF7AC6D4)
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke;
 
