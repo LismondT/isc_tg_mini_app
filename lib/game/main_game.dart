@@ -93,6 +93,8 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
               imagePath: group.img,
               movementPattern: group.movement,
               bulletPattern: group.bulletPattern,
+              minHealth: group.minHealth,
+              maxHealth: group.maxHealth,
             ),
           );
         }
@@ -102,9 +104,17 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
     scheduledEnemies.sort((a, b) => a.spawnTime.compareTo(b.spawnTime));
   }
 
-  void spawnEnemy(ScheduledEnemy scheduledEnemi) {
+  void spawnEnemy(ScheduledEnemy scheduledEnemy) {
     final x = Random.secure().nextInt(size.x as int) as double;
-    final enemy = Enemy(position: Vector2(x, -Enemy.enemySize));
+    final health =
+        Random.secure().nextInt(scheduledEnemy.maxHealth) +
+        scheduledEnemy.minHealth;
+
+    final enemy = Enemy(
+      position: Vector2(x, -Enemy.enemySize),
+      health: health,
+      movement: scheduledEnemy.movementPattern,
+    );
     add(enemy);
     activeEnemies.add(enemy);
   }

@@ -8,7 +8,7 @@ import 'package:tg_mini_app/game/game.dart';
 
 class Player extends SpriteComponent
     with HasGameReference<MainGame>, CollisionCallbacks {
-  Player() : super(size: Vector2(50, 100), anchor: Anchor.center);
+  Player() : super(size: Vector2(50, 50), anchor: Anchor.center);
 
   late final SpawnComponent _bulletSpawner;
 
@@ -22,7 +22,7 @@ class Player extends SpriteComponent
   FutureOr<void> onLoad() async {
     await super.onLoad();
 
-    sprite = await game.loadSprite('player-sprite.png');
+    sprite = await game.loadSprite('player/player1.png');
 
     position = game.size / 2;
 

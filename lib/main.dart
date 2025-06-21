@@ -7,7 +7,13 @@ import 'package:tg_mini_app/game/game.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Globals.levels = await LevelLoader.loadLevels();
+
+  try {
+    Globals.levels = await LevelLoader.loadLevels();
+  } catch (e) {
+    print(e);
+  }
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => GameProgress(),
