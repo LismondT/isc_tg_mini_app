@@ -94,6 +94,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  flutter_telegram_miniapp:
+    dependency: "direct main"
+    description:
+      name: flutter_telegram_miniapp
+      sha256: "7abf6ce3d100051cdff84fb797f2df13922f724e04055572418c34e9619d3bfc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -253,14 +261,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
-  telegram_web_app:
-    dependency: "direct main"
-    description:
-      name: telegram_web_app
-      sha256: "5c33aaa07d776552ce55b49b401d0e835115fbeb136877c6d19b3b1491000535"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.3"
   term_glyph:
     dependency: transitive
     description:

@@ -2,11 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:tg_mini_app/game/game.dart';
-import 'package:tg_mini_app/router.dart';
-
-import 'dart:js' as js;
 
 class Globals {
   static late final String phrase;
