@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_telegram_miniapp/flutter_telegram_miniapp.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:tg_mini_app/core/globals.dart';
@@ -6,6 +7,13 @@ import 'package:tg_mini_app/features/features.dart';
 
 final router = GoRouter(
   initialLocation: '/',
+  redirect: (BuildContext context, GoRouterState state) {
+    final queryParams = state.uri.queryParameters.containsKey('tgWebAppData');
+    if (queryParams && state.uri.toString() != '/') {
+      return '/';
+    }
+    return null;
+  },
   routes: [
     GoRoute(
       path: '/',
