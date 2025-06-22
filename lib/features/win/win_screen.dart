@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tg_mini_app/core/globals.dart';
-import 'package:tg_mini_app/router.dart';
 
 class WinScreen extends StatelessWidget {
   const WinScreen({super.key});
@@ -82,33 +81,6 @@ class WinScreen extends StatelessWidget {
                 'Нажмите на промокод, чтобы скопировать',
                 style: textTheme.bodySmall?.copyWith(
                   color: colorScheme.onSurface.withOpacity(0.6),
-                ),
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: colorScheme.primary,
-                  foregroundColor: colorScheme.onPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 15,
-                  ),
-                ),
-                onPressed: () async {
-                  try {
-                    await Globals.sendPromoCode();
-                  } catch (e) {
-                    router.pop();
-                  }
-                },
-                child: Text(
-                  'Отправить промокод в чат ${Globals.tgChatId}',
-                  style: textTheme.labelLarge!.copyWith(
-                    color: colorScheme.onPrimary,
-                  ),
                 ),
               ),
             ],

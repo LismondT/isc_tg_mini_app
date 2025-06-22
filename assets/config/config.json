@@ -1,5 +1,6 @@
 {
   "phrase": "ww",
   "promo_code": "У тебя спина белая :D",
-  "telegram_bot_token": "<Токен вашего телеграм бота>"
+  "telegram_bot_token": "<Токен вашего телеграм бота>",
+  "telegram_bot_api": ""
 }
