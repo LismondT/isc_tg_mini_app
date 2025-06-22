@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 
 import 'package:tg_mini_app/core/globals.dart';
 import 'package:tg_mini_app/features/features.dart';
@@ -10,7 +9,6 @@ final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
     if (state.uri.toString().contains('WebAppData')) {
-      Globals.tgChatId = TelegramWebApp.instance.initDataUnsafe?.chat?.id ?? 0;
       return '/';
     }
     return null;
