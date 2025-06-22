@@ -38,7 +38,14 @@
   <script src="flutter_bootstrap.js" async></script>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
+      // Telegram.WebApp.ready();
       Telegram.WebApp.disableVerticalSwipes();
+
+      // const chatId = Telegram.WebApp.initDataUnsafe?.chat?.id || 
+      //                Telegram.WebApp.initDataUnsafe?.user?.id || 
+      //                null;
+      
+      // window.telegramChatId = chatId ? chatId.toString() : null;
     });
   </script>
 </body>

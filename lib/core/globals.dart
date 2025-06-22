@@ -2,7 +2,12 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_telegram_miniapp/flutter_telegram_miniapp.dart';
 import 'package:tg_mini_app/game/game.dart';
+
+import 'dart:js_interop' as js;
+
+import 'package:tg_mini_app/router.dart';
 
 class Globals {
   static late final String phrase;
@@ -29,9 +34,15 @@ class Globals {
     phrase = data.phrase!;
     promoCode = data.promoCode!;
     tgToken = data.tgToken!;
+    tgChatId = WebApp().initDataUnsafe.user?.id ?? 0;
   }
 
   static Future<void> sendPromoCode() async {
+    if (tgChatId == 0) {
+      router.push('/level/1');
+      return;
+    }
+
     final String url = 'https://api.telegram.org/bot$tgToken/sendMessage';
     final dio = Dio();
 
