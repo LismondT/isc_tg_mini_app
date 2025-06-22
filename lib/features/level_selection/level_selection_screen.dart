@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_telegram_miniapp/flutter_telegram_miniapp.dart';
 import 'package:provider/provider.dart';
 import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/router.dart';
@@ -127,7 +128,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                       style: Theme.of(context).textTheme.bodyLarge,
                     )
                   : Text(
-                      'Пройдите все уровни, чтобы получить промокод!',
+                      'Пройдите все уровни, чтобы получить промокод! ${WebApp().initDataUnsafe.user?.id}',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
             ),

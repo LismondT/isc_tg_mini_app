@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tg_mini_app/core/globals.dart';
-import 'package:tg_mini_app/router.dart';
 
 class WinScreen extends StatelessWidget {
   const WinScreen({super.key});

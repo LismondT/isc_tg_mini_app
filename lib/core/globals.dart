@@ -34,6 +34,7 @@ class Globals {
     phrase = data.phrase!;
     promoCode = data.promoCode!;
     tgToken = data.tgToken!;
+    WebApp().init();
     tgChatId = WebApp().initDataUnsafe.user?.id ?? 0;
   }
 
