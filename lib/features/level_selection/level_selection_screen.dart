@@ -87,7 +87,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
           _isAnimating = false;
         });
 
-        await gameProgress.completeLevel(completedLevel);
+        gameProgress.completeLevel(completedLevel);
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (mounted) {

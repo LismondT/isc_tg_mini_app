@@ -11,7 +11,7 @@ class GameProgress with ChangeNotifier {
   int get totalLevels => _totalLevels;
   bool get isWin => _currentLevel > _totalLevels;
 
-  Future<void> completeLevel(int level) async {
+  void completeLevel(int level) {
     if (level > _highestLevelCompleted) {
       _highestLevelCompleted = level;
     }
@@ -22,7 +22,6 @@ class GameProgress with ChangeNotifier {
     notifyListeners();
 
     if (isWin) {
-      await Globals.sendPromoCode();
       Globals.isWin = true;
     }
   }

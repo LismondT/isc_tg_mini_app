@@ -96,12 +96,11 @@ class WinScreen extends StatelessWidget {
                     vertical: 15,
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  //Globals.sendPromoCode();
+                onPressed: () async {
+                  await Globals.sendPromoCode();
                 },
                 child: Text(
-                  'Закрыть',
+                  'Отправить промокод в чат',
                   style: textTheme.labelLarge!.copyWith(
                     color: colorScheme.onPrimary,
                   ),
