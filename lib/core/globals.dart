@@ -10,7 +10,7 @@ class Globals {
   static late final String phrase;
   static late final String promoCode;
   static late final String tgToken;
-  static late final int tgChatId;
+  static int tgChatId = 0;
   static final String cleanPhrase = phrase.replaceAll(' ', '');
   static final levelsCount = cleanPhrase.length;
 
@@ -21,7 +21,6 @@ class Globals {
   static Future<void> load() async {
     levels = await LevelLoader.loadLevels();
     await _loadGlobals();
-    tgChatId = TelegramWebApp.instance.initDataUnsafe?.chat?.id ?? 0;
   }
 
   static Future<void> _loadGlobals() async {
