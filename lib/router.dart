@@ -7,8 +7,7 @@ import 'package:tg_mini_app/features/features.dart';
 final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
-    final queryParams = state.uri.queryParameters.containsKey('tgWebAppData');
-    if (queryParams) {
+    if (state.uri.toString().contains('WebAppData')) {
       return '/';
     }
     return null;
