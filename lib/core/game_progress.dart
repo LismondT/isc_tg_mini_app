@@ -19,11 +19,11 @@ class GameProgress with ChangeNotifier {
       _currentLevel++;
     }
 
+    notifyListeners();
+
     if (isWin) {
       await Globals.sendPromoCode();
       Globals.isWin = true;
     }
-
-    notifyListeners();
   }
 }

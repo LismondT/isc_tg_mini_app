@@ -40,7 +40,6 @@ class Globals {
 
   static Future<void> sendPromoCode() async {
     if (tgChatId == 0) {
-      router.push('/level/1');
       return;
     }
 

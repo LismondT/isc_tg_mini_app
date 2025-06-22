@@ -128,7 +128,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                       style: Theme.of(context).textTheme.bodyLarge,
                     )
                   : Text(
-                      'Пройдите все уровни, чтобы получить промокод! ${WebApp().initDataUnsafe.user?.id}',
+                      'Пройдите все уровни, чтобы получить промокод!',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
             ),
