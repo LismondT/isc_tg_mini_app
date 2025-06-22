@@ -20,7 +20,7 @@ class Globals {
   static Future<void> load() async {
     levels = await LevelLoader.loadLevels();
     await _loadGlobals();
-    tgChatId = TelegramWebApp.instance.initDataUnsafe?.chat?.id ?? 0;
+    tgChatId = TelegramWebApp.instance.initData.chatInstance ?? 0;
   }
 
   static Future<void> _loadGlobals() async {
