@@ -8,7 +8,7 @@ final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
     final queryParams = state.uri.queryParameters.containsKey('tgWebAppData');
-    if (queryParams && state.uri.toString() != '/') {
+    if (queryParams) {
       return '/';
     }
     return null;
