@@ -10,27 +10,8 @@ import 'package:tg_mini_app/features/win/win_screen.dart';
 final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
-    final tgWebAppData = state.uri.queryParameters['tgWebAppData'];
-    if (tgWebAppData != null) {
-      // Разбиваем на пары ключ-значение
-      final params = tgWebAppData.split('&');
-
-      for (final param in params) {
-        if (param.startsWith('user=')) {
-          final userJson = Uri.decodeComponent(param.substring(5));
-          try {
-            final userData = json.decode(userJson);
-            final chatId = userData['id'] as int;
-            debugPrint('Extracted Chat ID: $chatId');
-
-            Globals.tgChatId = chatId;
-
-            return '/';
-          } catch (e) {
-            debugPrint('Error decoding user JSON: $e');
-          }
-        }
-      }
+    if (state.uri.toString().contains('WebAppData')) {
+      return '/';
     }
 
     return null;

@@ -5,13 +5,9 @@ import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/features/features.dart';
 
 void main() async {
-  final webApp = WebApp();
-  webApp.init();
-  Globals.tgChatId = webApp.initDataUnsafe.chat!.id;
-
   WidgetsFlutterBinding.ensureInitialized();
-
-  await webApp.showAlertAsync(message: 'aaaaaaaaaaa');
+  WebApp().init();
+  Globals.tgChatId = WebApp().initDataUnsafe.chat!.id;
 
   try {
     await Globals.load();
