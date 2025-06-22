@@ -36,5 +36,10 @@
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      Telegram.WebApp.disableVerticalSwipes();
+    });
+  </script>
 </body>
 </html>
