@@ -6,8 +6,6 @@ import 'package:tg_mini_app/core/core.dart';
 import 'package:tg_mini_app/features/features.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
   try {
     if (TelegramWebApp.instance.isSupported) {
       TelegramWebApp.instance.ready();
@@ -23,6 +21,8 @@ void main() async {
     main();
     return;
   }
+
+  WidgetsFlutterBinding.ensureInitialized();
 
   try {
     await Globals.load();

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:tg_mini_app/game/game.dart';
+import 'package:tg_mini_app/router.dart';
 
 class Globals {
   static late final String phrase;
@@ -35,6 +36,7 @@ class Globals {
 
   static Future<void> sendPromoCode() async {
     if (tgChatId == 0) {
+      router.push('/level/1');
       return;
     }
 
