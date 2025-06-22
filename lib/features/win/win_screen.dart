@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tg_mini_app/core/globals.dart';
+import 'package:tg_mini_app/router.dart';
 
 class WinScreen extends StatelessWidget {
   const WinScreen({super.key});
@@ -97,10 +98,14 @@ class WinScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () async {
-                  await Globals.sendPromoCode();
+                  try {
+                    await Globals.sendPromoCode();
+                  } catch (e) {
+                    router.pop();
+                  }
                 },
                 child: Text(
-                  'Отправить промокод в чат',
+                  'Отправить промокод в чат ${Globals.tgChatId}',
                   style: textTheme.labelLarge!.copyWith(
                     color: colorScheme.onPrimary,
                   ),
