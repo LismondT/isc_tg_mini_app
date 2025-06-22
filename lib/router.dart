@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_telegram_miniapp/flutter_telegram_miniapp.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:tg_mini_app/core/globals.dart';
@@ -40,6 +39,8 @@ final router = GoRouter(
       ],
     ),
   ],
-  errorBuilder: (context, state) =>
-      const Scaffold(body: Center(child: Text('Page not found'))),
+  errorBuilder: (context, state) {
+    final error = state.error;
+    return Scaffold(body: Center(child: Text('Page not found $error')));
+  },
 );
