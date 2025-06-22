@@ -6,6 +6,8 @@ import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:tg_mini_app/game/game.dart';
 import 'package:tg_mini_app/router.dart';
 
+import 'dart:js' as js;
+
 class Globals {
   static late final String phrase;
   static late final String promoCode;
@@ -34,7 +36,13 @@ class Globals {
   }
 
   static Future<void> sendPromoCode() async {
-    if (tgChatId == 0) {
+    int chatId;
+
+    try {
+      final tg = js.context['Telegram']['WebApp'];
+      final idStr = tg['initDataUnsafe']['user']['id'].toString();
+      chatId = int.parse(idStr);
+    } catch (e) {
       router.push('/level/1');
       return;
     }
@@ -45,7 +53,7 @@ class Globals {
     await dio.post(
       url,
       data: {
-        'chat_id': tgChatId,
+        'chat_id': chatId,
         'text':
             '''
 🎉 Поздравляем с победой! 🎉
