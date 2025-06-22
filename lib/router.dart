@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,8 +11,26 @@ final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
     if (state.uri.toString().contains('WebAppData')) {
-      final query = state.uri.queryParameters['tgWebAppData'];
-      return '/debug/${state.uri.toString()}';
+      final uri = Uri.parse(state.uri.toString());
+      final tgWebAppData = uri.queryParameters['tgWebAppData'];
+
+      if (tgWebAppData != null) {
+        final decodedParams = Uri.decodeQueryComponent(tgWebAppData);
+        final params = Uri.splitQueryString(decodedParams);
+        final userJson = params['user'];
+
+        if (userJson != null) {
+          try {
+            final userData = json.decode(userJson);
+            final chatId = userData['id'];
+
+            Globals.tgChatId = int.parse(chatId);
+            return '/debug/$chatId';
+          } catch (e) {
+            return '/debug/${e.toString()}';
+          }
+        }
+      }
     }
     return null;
   },
