@@ -36,24 +36,13 @@ class Globals {
   }
 
   static Future<void> sendPromoCode() async {
-    int chatId;
-
-    try {
-      final tg = js.context['Telegram']['WebApp'];
-      final idStr = tg['initDataUnsafe']['user']['id'].toString();
-      chatId = int.parse(idStr);
-    } catch (e) {
-      router.push('/level/1');
-      return;
-    }
-
     final String url = 'https://api.telegram.org/bot$tgToken/sendMessage';
     final dio = Dio();
 
     await dio.post(
       url,
       data: {
-        'chat_id': chatId,
+        'chat_id': tgChatId,
         'text':
             '''
 🎉 Поздравляем с победой! 🎉

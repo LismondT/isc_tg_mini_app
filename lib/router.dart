@@ -9,7 +9,8 @@ final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
     if (state.uri.toString().contains('WebAppData')) {
-      return '/';
+      final query = state.uri.queryParameters['tgWebAppData'];
+      return '/info/$query';
     }
     return null;
   },
@@ -37,6 +38,13 @@ final router = GoRouter(
           },
         ),
         GoRoute(path: 'win', builder: (context, state) => WinScreen()),
+        GoRoute(
+          path: 'debug/:info',
+          builder: (context, state) {
+            final info = state.pathParameters['info'];
+            return Scaffold(body: Center(child: Text('Info: $info')));
+          },
+        ),
       ],
     ),
   ],
