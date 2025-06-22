@@ -21,6 +21,7 @@ class GameProgress with ChangeNotifier {
 
     if (isWin) {
       await Globals.sendPromoCode();
+      Globals.isWin = true;
     }
 
     notifyListeners();

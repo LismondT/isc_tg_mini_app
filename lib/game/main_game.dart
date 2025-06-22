@@ -131,7 +131,7 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
   }
 
   void spawnEnemy(ScheduledEnemy scheduledEnemy) {
-    final x = Random.secure().nextInt(size.x as int) as double;
+    final x = Random.secure().nextInt(size.x.toInt()).toDouble();
     final health =
         Random.secure().nextInt(scheduledEnemy.maxHealth) +
         scheduledEnemy.minHealth;

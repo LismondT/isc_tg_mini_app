@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:tg_mini_app/core/globals.dart';
 import 'package:tg_mini_app/features/features.dart';
+import 'package:tg_mini_app/features/win/win_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -35,6 +36,7 @@ final router = GoRouter(
             );
           },
         ),
+        GoRoute(path: 'win', builder: (context, state) => WinScreen()),
       ],
     ),
   ],

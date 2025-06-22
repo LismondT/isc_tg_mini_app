@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tg_mini_app/core/globals.dart';
-import 'package:tg_mini_app/router.dart';
 
 class PhraseProgressScreen extends StatefulWidget {
   final int unlockedLetters; // Открытые буквы
@@ -19,22 +17,8 @@ class PhraseProgressScreen extends StatefulWidget {
 }
 
 class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
-  bool _showVictoryScreen = false;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.unlockedLetters >= widget.fullPhrase.length) {
-      _showVictoryScreen = true;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (_showVictoryScreen) {
-      return _buildVictoryScreen();
-    }
-
     final theme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -138,140 +122,6 @@ class _PhraseProgressScreenState extends State<PhraseProgressScreen> {
           ),
         );
       }).toList(),
-    );
-  }
-
-  Widget _buildVictoryScreen() {
-    final theme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
-    return Scaffold(
-      backgroundColor: theme.surfaceVariant.withOpacity(0.3),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Анимированная иконка победы
-              Icon(Icons.celebration, color: theme.primary, size: 100),
-              const SizedBox(height: 24),
-
-              // Заголовок
-              Text(
-                'ПОБЕДА!',
-                style: textTheme.displayMedium?.copyWith(
-                  color: theme.primary,
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    Shadow(
-                      blurRadius: 10,
-                      color: theme.primary.withOpacity(0.3),
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 32),
-
-              // Контейнер с фразой
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: theme.surface,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: theme.shadow.withOpacity(0.1),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      'Вы собрали фразу:',
-                      style: textTheme.titleLarge?.copyWith(
-                        color: theme.onSurface.withOpacity(0.8),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      widget.fullPhrase,
-                      textAlign: TextAlign.center,
-                      style: textTheme.headlineSmall?.copyWith(
-                        color: theme.onSurface,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 40),
-
-              // Промокод (если есть)
-              if (Globals.promoCode.isNotEmpty) ...[
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 16,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Ваш промокод:',
-                        style: textTheme.titleMedium?.copyWith(
-                          color: theme.onSecondaryContainer,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        Globals.promoCode,
-                        style: textTheme.headlineMedium?.copyWith(
-                          color: theme.onSecondaryContainer,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 32),
-              ],
-
-              // Кнопка
-              FilledButton(
-                onPressed: () => router.pop(context),
-                style: FilledButton.styleFrom(
-                  backgroundColor: theme.primary,
-                  foregroundColor: theme.onPrimary,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 48,
-                    vertical: 16,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  'Назад',
-                  style: textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: theme.onPrimary,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

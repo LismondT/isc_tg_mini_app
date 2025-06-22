@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_telegram_miniapp/flutter_telegram_miniapp.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:tg_mini_app/game/game.dart';
 
 class Globals {
@@ -13,18 +13,14 @@ class Globals {
   static final String cleanPhrase = phrase.replaceAll(' ', '');
   static final levelsCount = cleanPhrase.length;
 
+  static bool isWin = false;
+
   static List<Level> levels = [];
 
   static Future<void> load() async {
     levels = await LevelLoader.loadLevels();
     await _loadGlobals();
-    final webApp = WebApp();
-    webApp.init();
-    try {
-      tgChatId = webApp.initDataUnsafe.user?.id ?? 0;
-    } catch (e) {
-      tgChatId = 1491721075;
-    }
+    tgChatId = TelegramWebApp.instance.initDataUnsafe?.chat?.id ?? 0;
   }
 
   static Future<void> _loadGlobals() async {
@@ -55,7 +51,7 @@ class Globals {
 
 Вы успешно завершили игру и получаете специальный промокод:
 
-<code>$promoCode</code>
+<pre><code>$promoCode</code></pre>
 (нажмите, чтобы скопировать)
 
 Спасибо за участие!

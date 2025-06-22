@@ -59,6 +59,9 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
           .then((_) {
             if (mounted) {
               setState(() => _isAnimating = false);
+              if (gameProgress.isWin) {
+                router.push('/win');
+              }
             }
           });
     } else {
@@ -104,13 +107,31 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
         MediaQuery.of(context).size.width / 2 - _itemWidth / 2;
     final totalContentWidth = totalLevels * (_itemWidth + _itemSpacing);
 
+    final theme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/images/icon.png', fit: BoxFit.fitHeight),
+        title: Image.asset('assets/images/icon.png', fit: BoxFit.cover),
       ),
       body: Column(
         children: [
-          SizedBox(height: MediaQuery.of(context).size.height / 4),
+          Expanded(child: Container()),
+          Card.filled(
+            margin: const EdgeInsets.all(8.0),
+            color: theme.secondaryContainer,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: gameProgress.isWin
+                  ? Text(
+                      'Поздравляем! Вы собрали фразу! Промокод выслан в чат!',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )
+                  : Text(
+                      'Пройдите все уровни, чтобы получить промокод!',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+            ),
+          ),
           SizedBox(
             height: 120,
             child: Stack(
@@ -132,7 +153,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                     controller: _scrollController,
                     scrollDirection: Axis.horizontal,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: totalLevels,
+                    itemCount: totalLevels + 1,
                     padding: EdgeInsets.symmetric(
                       horizontal:
                           MediaQuery.of(context).size.width / 2 -
@@ -143,6 +164,10 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                       final isCompleted = level <= completedLevels;
                       final isCurrent = level == currentLevel;
                       final isLocked = level > currentLevel;
+
+                      if (level == totalLevels + 1) {
+                        return _buildWinCircle(currentLevel == level);
+                      }
 
                       return _buildLevelCircle(
                         level: level,
@@ -157,13 +182,13 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
               ],
             ),
           ),
-          const SizedBox(height: 80),
+          const SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: _isAnimating
-                ? const CircularProgressIndicator()
-                : FilledButton(
-                    onPressed: () async {
+            child: FilledButton(
+              onPressed: gameProgress.isWin || _isAnimating
+                  ? null
+                  : () async {
                       final result = await router.push<bool>(
                         '/level/$currentLevel',
                       );
@@ -171,8 +196,8 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
                         _onLevelComplete(currentLevel);
                       }
                     },
-                    child: const Text('Играть'),
-                  ),
+              child: const Text('Играть'),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -183,6 +208,30 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
               child: const Text('Прогресс'),
             ),
           ),
+          const SizedBox(height: 60),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWinCircle(bool isWin) {
+    return Container(
+      width: _itemWidth,
+      margin: EdgeInsets.only(right: _itemSpacing),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: isWin ? Colors.amber : Colors.grey[300],
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.transparent, width: 2),
+            ),
+            child: Center(child: const Icon(Icons.flag, color: Colors.black)),
+          ),
+          Padding(padding: const EdgeInsets.only(top: 20.0)),
         ],
       ),
     );
