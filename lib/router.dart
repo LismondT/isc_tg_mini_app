@@ -10,7 +10,7 @@ final router = GoRouter(
   redirect: (BuildContext context, GoRouterState state) {
     if (state.uri.toString().contains('WebAppData')) {
       final query = state.uri.queryParameters['tgWebAppData'];
-      return '/debug/$query';
+      return '/debug/${state.uri.toString()}';
     }
     return null;
   },
