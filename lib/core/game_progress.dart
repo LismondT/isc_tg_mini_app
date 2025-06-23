@@ -5,7 +5,6 @@ class GameProgress with ChangeNotifier {
   int _highestLevelCompleted = 0;
   int _currentLevel = 1;
   final int _totalLevels = Globals.levelsCount;
-
   int get highestLevelCompleted => _highestLevelCompleted;
   int get currentLevel => _currentLevel;
   int get totalLevels => _totalLevels;

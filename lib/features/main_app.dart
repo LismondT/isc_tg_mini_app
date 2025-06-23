@@ -8,7 +8,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: router,
-      title: 'Level Selection',
+      title: 'Игра',
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Color(0xFF7BC19D)),
     );
   }

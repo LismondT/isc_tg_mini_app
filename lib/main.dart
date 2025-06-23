@@ -12,10 +12,5 @@ void main() async {
     print(e);
   }
 
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => GameProgress(),
-      child: const MainApp(),
-    ),
-  );
+  runApp(Provider(create: (context) => GameProgress(), child: const MainApp()));
 }
