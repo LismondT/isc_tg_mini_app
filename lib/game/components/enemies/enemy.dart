@@ -25,7 +25,7 @@ class Enemy extends SpriteComponent
   final double speed;
   bool isRight = false;
 
-  static const enemySize = 40.0;
+  static const enemySize = 25.0;
   int health;
   bool isHit = false;
   final double knockbackForce = 10.0;
@@ -46,7 +46,7 @@ class Enemy extends SpriteComponent
   Future<void> onLoad() async {
     await super.onLoad();
 
-    size = Vector2.all(enemySize + health * 10);
+    size = Vector2.all(enemySize + health * 5);
 
     _pulseSpeed = 1 + Random().nextDouble() * 0.5; // 1.0 - 1.5
     _rotationSpeed = (Random().nextDouble() - 0.5) * 0.5; // -0.25 - 0.25
