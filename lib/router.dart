@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:tg_mini_app/core/game_progress.dart';
 
 import 'package:tg_mini_app/core/globals.dart';
 import 'package:tg_mini_app/features/features.dart';
@@ -8,6 +10,11 @@ import 'package:tg_mini_app/features/win/win_screen.dart';
 final router = GoRouter(
   initialLocation: '/',
   redirect: (BuildContext context, GoRouterState state) {
+    final gameProgress = Provider.of<GameProgress>(context, listen: false);
+    if (gameProgress.isWin) {
+      return '/win';
+    }
+
     if (state.uri.toString().contains('WebAppData')) {
       return '/';
     }

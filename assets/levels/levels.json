@@ -6,7 +6,7 @@
       "waves": [
         {
           "start_time": 0,
-          "end_time": 10,
+          "end_time": 8,
           "enemies": [
             {
               "count": 10,
@@ -20,7 +20,7 @@
     },
     {
       "id": 2,
-      "duration": 8,
+      "duration": 10,
       "waves": [
         {
           "start_time": 0,
@@ -78,7 +78,7 @@
         },
         {
           "start_time": 5,
-          "end_time": 8,
+          "end_time": 7,
           "enemies": [
             {
               "count": 8,
@@ -96,7 +96,7 @@
       "waves": [
         {
           "start_time": 0,
-          "end_time": 10,
+          "end_time": 8,
           "enemies": [
             {
               "count": 15,
@@ -126,7 +126,7 @@
         },
         {
           "start_time": 6,
-          "end_time": 12,
+          "end_time": 10,
           "enemies": [
             {
               "count": 8,
@@ -140,11 +140,11 @@
     },
     {
       "id": 7,
-      "duration": 11,
+      "duration": 12,
       "waves": [
         {
           "start_time": 0,
-          "end_time": 11,
+          "end_time": 10,
           "enemies": [
             {
               "count": 10,
@@ -376,8 +376,8 @@
             },
             {
               "count": 5,
-              "min_health": 5,
-              "max_health": 6,
+              "min_health": 3,
+              "max_health": 5,
               "movement": "line"
             }
           ]
@@ -394,8 +394,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 5,
-              "max_health": 7,
+              "min_health": 1,
+              "max_health": 3,
               "movement": "circle"
             }
           ]

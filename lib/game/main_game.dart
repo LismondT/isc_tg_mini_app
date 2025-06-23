@@ -92,7 +92,7 @@ class MainGame extends FlameGame with PanDetector, HasCollisionDetection {
       MoveEffect.by(
         Vector2(0, -size.y - player.size.y),
         EffectController(
-          duration: 2,
+          duration: 1,
           curve: Curves.easeInCubic,
           alternate: false,
         ),
