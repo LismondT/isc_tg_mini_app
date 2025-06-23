@@ -15,7 +15,7 @@ class LevelSelectionScreen extends StatefulWidget {
 class _LevelSelectionScreenState extends State<LevelSelectionScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late ScrollController _scrollController;
+  late ScrollController? _scrollController;
   final double _itemWidth = 80.0;
   final double _itemSpacing = 20.0;
   int? _animatedLevel;
@@ -38,7 +38,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
   @override
   void dispose() {
     _animationController.dispose();
-    _scrollController.dispose();
+    _scrollController?.dispose();
     super.dispose();
   }
 
@@ -51,7 +51,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
     if (animate) {
       setState(() => _isAnimating = true);
       _scrollController
-          .animateTo(
+          ?.animateTo(
             targetOffset,
             duration: const Duration(milliseconds: 600),
             curve: Curves.fastOutSlowIn,
@@ -65,7 +65,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
             }
           });
     } else {
-      _scrollController.jumpTo(targetOffset);
+      _scrollController?.jumpTo(targetOffset);
     }
   }
 

@@ -12,10 +12,9 @@ void main() async {
     print(e);
   }
 
+  final gameProgress = await GameProgress.create();
+
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => GameProgress(),
-      child: const MainApp(),
-    ),
+    ChangeNotifierProvider.value(value: gameProgress, child: const MainApp()),
   );
 }

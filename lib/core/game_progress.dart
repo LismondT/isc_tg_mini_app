@@ -7,10 +7,6 @@ class GameProgress with ChangeNotifier {
   int _currentLevel = 1;
   final int _totalLevels = Globals.levelsCount;
 
-  GameProgress() {
-    _load();
-  }
-
   int get highestLevelCompleted => _highestLevelCompleted;
   int get currentLevel => _currentLevel;
   int get totalLevels => _totalLevels;
@@ -41,4 +37,12 @@ class GameProgress with ChangeNotifier {
     await prefs.setInt('highestLevelCompleted', _highestLevelCompleted);
     await prefs.setInt('currentLevel', _currentLevel);
   }
+
+  static Future<GameProgress> create() async {
+    final instance = GameProgress._internal();
+    await instance._load();
+    return instance;
+  }
+
+  GameProgress._internal(); //
 }
