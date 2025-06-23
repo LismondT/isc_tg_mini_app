@@ -30,6 +30,11 @@ class Enemy extends SpriteComponent
   bool isHit = false;
   final double knockbackForce = 10.0;
 
+  late final double _circleRadius;
+  late final double _circleSpeed;
+  double _circleAngle = 0;
+  Vector2 _circleCenter = Vector2.zero();
+
   late final double _pulseSpeed;
   late final double _rotationSpeed;
   late final double _baseScale;
@@ -48,6 +53,13 @@ class Enemy extends SpriteComponent
     _baseScale = 0.9 + Random().nextDouble() * 0.2; // 0.9 - 1.1
     _movementOffset = Random().nextDouble() * 2 * pi;
     _movementPhase = Random().nextDouble() * 2 * pi;
+
+    if (movement == 'circle') {
+      _circleRadius = 30 + Random().nextDouble() * 40; // Радиус 30-70 пикселей
+      _circleSpeed = 1 + Random().nextDouble() * 1.5; // Скорость 1-2.5 рад/сек
+      _circleCenter = position.clone();
+      _circleAngle = Random().nextDouble() * 2 * pi; // Случайный начальный угол
+    }
 
     sprite = await Sprite.load('enemies/Virus_0003.png');
     isRight = Random.secure().nextBool();
@@ -97,6 +109,20 @@ class Enemy extends SpriteComponent
   void _move(double dt) {
     switch (movement) {
       case 'circle':
+        // Обновляем угол для движения по кругу
+        _circleAngle += dt * _circleSpeed;
+
+        // Вычисляем новую позицию на окружности
+        final newX = _circleCenter.x + _circleRadius * cos(_circleAngle);
+        final newY = _circleCenter.y + _circleRadius * sin(_circleAngle);
+
+        // Применяем новую позицию
+        position.setValues(newX, newY);
+
+        // Центр круга медленно движется вниз
+        _circleCenter.y += dt * speed / 3;
+        break;
+      case 'sine':
         final amplitude =
             game.size.x * 0.3; // Размах колебаний (30% ширины экрана)
         final frequency = 0.5; // Частота колебаний

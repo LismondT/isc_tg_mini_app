@@ -2,12 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_telegram_miniapp/flutter_telegram_miniapp.dart';
 import 'package:tg_mini_app/game/game.dart';
-
-import 'dart:js_interop' as js;
-
-import 'package:tg_mini_app/router.dart';
 
 class Globals {
   static late final String phrase;
@@ -34,9 +29,9 @@ class Globals {
 
     phrase = data.phrase!;
     promoCode = data.promoCode!;
-    tgToken = data.tgToken!;
-    WebApp().init();
-    tgChatId = WebApp().initDataUnsafe.user?.id ?? 0;
+    //tgToken = data.tgToken!;
+    //WebApp().init();
+    //tgChatId = WebApp().initDataUnsafe.user?.id ?? 0;
   }
 
   static Future<void> sendPromoCode() async {
@@ -66,8 +61,8 @@ class _Data {
     return _Data(
       phrase: json['phrase'],
       promoCode: json['promo_code'],
-      tgToken: json['telegram_bot_token'],
-      tgApi: json['telegram_bot_api'],
+      tgToken: '', //json['telegram_bot_token'],
+      tgApi: '', //json['telegram_bot_api'],
     );
   }
 }

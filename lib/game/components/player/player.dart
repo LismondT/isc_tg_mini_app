@@ -36,7 +36,7 @@ class Player extends SpriteComponent
     );
 
     _bulletSpawner = SpawnComponent(
-      period: 0.25,
+      period: 0.2,
       selfPositioning: true,
       factory: (index) {
         return Bullet(position: position + Vector2(0, -height / 2));

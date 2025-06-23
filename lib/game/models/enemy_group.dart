@@ -17,12 +17,12 @@ class EnemyGroup {
 
   factory EnemyGroup.fromJson(Map<String, dynamic> json) {
     return EnemyGroup(
-      img: json['img'],
+      img: json['img'] ?? '',
       count: json['count'],
       minHealth: json['min_health'],
       maxHealth: json['max_health'],
       movement: json['movement'],
-      bulletPattern: json['bullet_pattern'],
+      bulletPattern: json['bullet_pattern'] ?? '',
     );
   }
 }

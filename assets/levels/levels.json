@@ -9,32 +9,28 @@
           "end_time": 10,
           "enemies": [
             {
-              "img": "",
               "count": 10,
               "min_health": 1,
               "max_health": 1,
-              "movement": "line",
-              "bullet_pattern": null
+              "movement": "line"
             }
           ]
         }
       ]
     },
-   {
+    {
       "id": 2,
-      "duration": 12,
+      "duration": 8,
       "waves": [
         {
           "start_time": 0,
-          "end_time": 12,
+          "end_time": 8,
           "enemies": [
             {
-              "img": "",
-              "count": 15,
+              "count": 10,
               "min_health": 1,
-              "max_health": 2,
-              "movement": "line",
-              "bullet_pattern": null
+              "max_health": 3,
+              "movement": "line"
             }
           ]
         }
@@ -42,75 +38,53 @@
     },
     {
       "id": 3,
-      "duration": 15,
+      "duration": 10,
       "waves": [
         {
           "start_time": 0,
-          "end_time": 15,
+          "end_time": 8,
           "enemies": [
             {
-              "img": "",
-              "count": 20,
+              "count": 15,
               "min_health": 1,
-              "max_health": 2,
-              "movement": "line",
-              "bullet_pattern": null
+              "max_health": 3,
+              "movement": "line"
             },
             {
-              "img": "",
-              "count": 10,
+              "count": 3,
               "min_health": 1,
               "max_health": 1,
-              "movement": "zigzag",
-              "bullet_pattern": null
+              "movement": "zigzag"
             }
           ]
         }
       ]
     },
-     {
+    {
       "id": 4,
-      "duration": 18,
+      "duration": 10,
       "waves": [
         {
           "start_time": 0,
           "end_time": 5,
           "enemies": [
             {
-              "img": "",
-              "count": 8,
-              "min_health": 3,
+              "count": 10,
+              "min_health": 2,
               "max_health": 5,
-              "movement": "line",
-              "bullet_pattern": "single"
+              "movement": "line"
             }
           ]
         },
         {
           "start_time": 5,
-          "end_time": 15,
+          "end_time": 8,
           "enemies": [
             {
-              "img": "",
-              "count": 25,
+              "count": 8,
               "min_health": 1,
-              "max_health": 2,
-              "movement": "zigzag",
-              "bullet_pattern": null
-            }
-          ]
-        },
-        {
-          "start_time": 15,
-          "end_time": 18,
-          "enemies": [
-            {
-              "img": "",
-              "count": 5,
-              "min_health": 5,
-              "max_health": 7,
-              "movement": "line",
-              "bullet_pattern": "single"
+              "max_health": 1,
+              "movement": "zigzag"
             }
           ]
         }
@@ -118,33 +92,17 @@
     },
     {
       "id": 5,
-      "duration": 20,
+      "duration": 10,
       "waves": [
         {
           "start_time": 0,
           "end_time": 10,
           "enemies": [
             {
-              "img": "",
               "count": 15,
               "min_health": 3,
-              "max_health": 4,
-              "movement": "zigzag",
-              "bullet_pattern": "single"
-            }
-          ]
-        },
-        {
-          "start_time": 10,
-          "end_time": 20,
-          "enemies": [
-            {
-              "img": "",
-              "count": 30,
-              "min_health": 1,
-              "max_health": 2,
-              "movement": "circle",
-              "bullet_pattern": null
+              "max_health": 5,
+              "movement": "zigzag"
             }
           ]
         }
@@ -152,47 +110,29 @@
     },
     {
       "id": 6,
-      "duration": 25,
+      "duration": 12,
       "waves": [
         {
           "start_time": 0,
-          "end_time": 5,
+          "end_time": 7,
           "enemies": [
             {
-              "img": "",
-              "count": 3,
-              "min_health": 10,
-              "max_health": 12,
-              "movement": "line",
-              "bullet_pattern": "spiral"
-            }
-          ]
-        },
-        {
-          "start_time": 5,
-          "end_time": 15,
-          "enemies": [
-            {
-              "img": "",
-              "count": 20,
-              "min_health": 3,
+              "count": 12,
+              "min_health": 2,
               "max_health": 4,
-              "movement": "zigzag",
-              "bullet_pattern": "single"
+              "movement": "circle"
             }
           ]
         },
         {
-          "start_time": 15,
-          "end_time": 25,
+          "start_time": 6,
+          "end_time": 12,
           "enemies": [
             {
-              "img": "",
-              "count": 10,
-              "min_health": 5,
-              "max_health": 7,
-              "movement": "circle",
-              "bullet_pattern": "double"
+              "count": 8,
+              "min_health": 3,
+              "max_health": 5,
+              "movement": "line"
             }
           ]
         }
@@ -200,47 +140,23 @@
     },
     {
       "id": 7,
-      "duration": 30,
+      "duration": 11,
       "waves": [
         {
           "start_time": 0,
-          "end_time": 10,
+          "end_time": 11,
           "enemies": [
             {
-              "img": "",
-              "count": 40,
-              "min_health": 1,
-              "max_health": 2,
-              "movement": "zigzag",
-              "bullet_pattern": null
-            }
-          ]
-        },
-        {
-          "start_time": 10,
-          "end_time": 20,
-          "enemies": [
+              "count": 10,
+              "min_health": 4,
+              "max_health": 6,
+              "movement": "zigzag"
+            },
             {
-              "img": "",
-              "count": 15,
-              "min_health": 5,
-              "max_health": 7,
-              "movement": "circle",
-              "bullet_pattern": "spiral"
-            }
-          ]
-        },
-        {
-          "start_time": 20,
-          "end_time": 30,
-          "enemies": [
-            {
-              "img": "",
               "count": 5,
-              "min_health": 15,
-              "max_health": 20,
-              "movement": "line",
-              "bullet_pattern": "double"
+              "min_health": 2,
+              "max_health": 3,
+              "movement": "circle"
             }
           ]
         }
@@ -248,47 +164,41 @@
     },
     {
       "id": 8,
-      "duration": 35,
+      "duration": 13,
       "waves": [
         {
           "start_time": 0,
-          "end_time": 15,
+          "end_time": 6,
           "enemies": [
             {
-              "img": "",
-              "count": 30,
+              "count": 15,
               "min_health": 3,
               "max_health": 5,
-              "movement": "zigzag",
-              "bullet_pattern": "single"
+              "movement": "line"
             }
           ]
         },
         {
-          "start_time": 15,
-          "end_time": 25,
+          "start_time": 5,
+          "end_time": 10,
           "enemies": [
             {
-              "img": "",
               "count": 10,
-              "min_health": 10,
-              "max_health": 12,
-              "movement": "circle",
-              "bullet_pattern": "spiral"
+              "min_health": 5,
+              "max_health": 7,
+              "movement": "circle"
             }
           ]
         },
         {
-          "start_time": 25,
-          "end_time": 35,
+          "start_time": 9,
+          "end_time": 13,
           "enemies": [
             {
-              "img": "",
-              "count": 2,
-              "min_health": 30,
-              "max_health": 35,
-              "movement": "line",
-              "bullet_pattern": "double"
+              "count": 7,
+              "min_health": 2,
+              "max_health": 4,
+              "movement": "zigzag"
             }
           ]
         }
@@ -296,6 +206,714 @@
     },
     {
       "id": 9,
+      "duration": 14,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 14,
+          "enemies": [
+            {
+              "count": 18,
+              "min_health": 4,
+              "max_health": 6,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "duration": 15,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 8,
+          "enemies": [
+            {
+              "count": 12,
+              "min_health": 6,
+              "max_health": 8,
+              "movement": "line"
+            }
+          ]
+        },
+        {
+          "start_time": 7,
+          "end_time": 15,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 4,
+              "max_health": 5,
+              "movement": "sine"
+            },
+            {
+              "count": 5,
+              "min_health": 3,
+              "max_health": 4,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "duration": 16,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 10,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 5,
+              "max_health": 7,
+              "movement": "zigzag"
+            }
+          ]
+        },
+        {
+          "start_time": 9,
+          "end_time": 16,
+          "enemies": [
+            {
+              "count": 12,
+              "min_health": 7,
+              "max_health": 9,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "duration": 14,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 14,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "circle"
+            },
+            {
+              "count": 8,
+              "min_health": 4,
+              "max_health": 6,
+              "movement": "sine"
+            },
+            {
+              "count": 6,
+              "min_health": 3,
+              "max_health": 5,
+              "movement": "zigzag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "duration": 17,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 7,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 5,
+              "max_health": 7,
+              "movement": "line"
+            }
+          ]
+        },
+        {
+          "start_time": 6,
+          "end_time": 12,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 6,
+              "max_health": 8,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 11,
+          "end_time": 17,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "duration": 18,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 18,
+          "enemies": [
+            {
+              "count": 25,
+              "min_health": 6,
+              "max_health": 8,
+              "movement": "zigzag"
+            },
+            {
+              "count": 5,
+              "min_health": 10,
+              "max_health": 12,
+              "movement": "line"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "duration": 20,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 10,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 9,
+              "max_health": 12,
+              "movement": "circle"
+            }
+          ]
+        },
+        {
+          "start_time": 9,
+          "end_time": 15,
+          "enemies": [
+            {
+              "count": 12,
+              "min_health": 7,
+              "max_health": 9,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 14,
+          "end_time": 20,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 5,
+              "max_health": 7,
+              "movement": "zigzag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "duration": 16,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 16,
+          "enemies": [
+            {
+              "count": 30,
+              "min_health": 4,
+              "max_health": 6,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "duration": 18,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 9,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 10,
+              "max_health": 12,
+              "movement": "line"
+            }
+          ]
+        },
+        {
+          "start_time": 8,
+          "end_time": 18,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "duration": 20,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 20,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 12,
+              "max_health": 15,
+              "movement": "zigzag"
+            },
+            {
+              "count": 15,
+              "min_health": 7,
+              "max_health": 9,
+              "movement": "sine"
+            },
+            {
+              "count": 8,
+              "min_health": 5,
+              "max_health": 7,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "duration": 22,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 11,
+          "enemies": [
+            {
+              "count": 25,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 10,
+          "end_time": 18,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 10,
+              "max_health": 12,
+              "movement": "zigzag"
+            }
+          ]
+        },
+        {
+          "start_time": 17,
+          "end_time": 22,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 15,
+              "max_health": 18,
+              "movement": "line"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "duration": 24,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 12,
+          "enemies": [
+            {
+              "count": 30,
+              "min_health": 6,
+              "max_health": 8,
+              "movement": "circle"
+            }
+          ]
+        },
+        {
+          "start_time": 11,
+          "end_time": 24,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 12,
+              "max_health": 15,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "duration": 20,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 20,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 15,
+              "max_health": 18,
+              "movement": "line"
+            },
+            {
+              "count": 10,
+              "min_health": 10,
+              "max_health": 12,
+              "movement": "zigzag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "duration": 22,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 10,
+          "enemies": [
+            {
+              "count": 25,
+              "min_health": 12,
+              "max_health": 14,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 9,
+          "end_time": 18,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "circle"
+            }
+          ]
+        },
+        {
+          "start_time": 17,
+          "end_time": 22,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 18,
+              "max_health": 20,
+              "movement": "zigzag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "duration": 25,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 15,
+          "enemies": [
+            {
+              "count": 35,
+              "min_health": 10,
+              "max_health": 12,
+              "movement": "line"
+            }
+          ]
+        },
+        {
+          "start_time": 14,
+          "end_time": 25,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 15,
+              "max_health": 18,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "duration": 20,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 20,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 20,
+              "max_health": 22,
+              "movement": "circle"
+            },
+            {
+              "count": 20,
+              "min_health": 12,
+              "max_health": 14,
+              "movement": "zigzag"
+            },
+            {
+              "count": 10,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "duration": 28,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 10,
+          "enemies": [
+            {
+              "count": 40,
+              "min_health": 8,
+              "max_health": 10,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 9,
+          "end_time": 18,
+          "enemies": [
+            {
+              "count": 25,
+              "min_health": 15,
+              "max_health": 18,
+              "movement": "circle"
+            }
+          ]
+        },
+        {
+          "start_time": 17,
+          "end_time": 25,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 22,
+              "max_health": 25,
+              "movement": "line"
+            }
+          ]
+        },
+        {
+          "start_time": 24,
+          "end_time": 28,
+          "enemies": [
+            {
+              "count": 10,
+              "min_health": 18,
+              "max_health": 20,
+              "movement": "zigzag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "duration": 30,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 15,
+          "enemies": [
+            {
+              "count": 30,
+              "min_health": 15,
+              "max_health": 18,
+              "movement": "zigzag"
+            }
+          ]
+        },
+        {
+          "start_time": 14,
+          "end_time": 25,
+          "enemies": [
+            {
+              "count": 25,
+              "min_health": 20,
+              "max_health": 22,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 24,
+          "end_time": 30,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 25,
+              "max_health": 28,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "duration": 25,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 25,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 25,
+              "max_health": 28,
+              "movement": "line"
+            },
+            {
+              "count": 25,
+              "min_health": 18,
+              "max_health": 20,
+              "movement": "sine"
+            },
+            {
+              "count": 15,
+              "min_health": 15,
+              "max_health": 18,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "duration": 32,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 12,
+          "enemies": [
+            {
+              "count": 50,
+              "min_health": 10,
+              "max_health": 12,
+              "movement": "zigzag"
+            }
+          ]
+        },
+        {
+          "start_time": 11,
+          "end_time": 22,
+          "enemies": [
+            {
+              "count": 30,
+              "min_health": 20,
+              "max_health": 22,
+              "movement": "circle"
+            }
+          ]
+        },
+        {
+          "start_time": 21,
+          "end_time": 32,
+          "enemies": [
+            {
+              "count": 20,
+              "min_health": 28,
+              "max_health": 30,
+              "movement": "sine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "duration": 35,
+      "waves": [
+        {
+          "start_time": 0,
+          "end_time": 15,
+          "enemies": [
+            {
+              "count": 40,
+              "min_health": 18,
+              "max_health": 20,
+              "movement": "sine"
+            }
+          ]
+        },
+        {
+          "start_time": 14,
+          "end_time": 25,
+          "enemies": [
+            {
+              "count": 25,
+              "min_health": 25,
+              "max_health": 28,
+              "movement": "line"
+            }
+          ]
+        },
+        {
+          "start_time": 24,
+          "end_time": 35,
+          "enemies": [
+            {
+              "count": 15,
+              "min_health": 30,
+              "max_health": 35,
+              "movement": "circle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 30,
       "duration": 40,
       "waves": [
         {
@@ -303,40 +921,46 @@
           "end_time": 20,
           "enemies": [
             {
-              "img": "",
-              "count": 50,
-              "min_health": 2,
-              "max_health": 3,
-              "movement": "circle",
-              "bullet_pattern": "single"
+              "count": 30,
+              "min_health": 25,
+              "max_health": 28,
+              "movement": "zigzag"
+            },
+            {
+              "count": 20,
+              "min_health": 30,
+              "max_health": 35,
+              "movement": "sine"
             }
           ]
         },
         {
-          "start_time": 20,
+          "start_time": 19,
           "end_time": 30,
           "enemies": [
             {
-              "img": "",
+              "count": 25,
+              "min_health": 20,
+              "max_health": 22,
+              "movement": "circle"
+            },
+            {
               "count": 15,
-              "min_health": 10,
-              "max_health": 12,
-              "movement": "zigzag",
-              "bullet_pattern": "spiral"
+              "min_health": 35,
+              "max_health": 40,
+              "movement": "line"
             }
           ]
         },
         {
-          "start_time": 30,
+          "start_time": 29,
           "end_time": 40,
           "enemies": [
             {
-              "img": "",
-              "count": 3,
+              "count": 20,
               "min_health": 40,
               "max_health": 45,
-              "movement": "line",
-              "bullet_pattern": "double"
+              "movement": "sine"
             }
           ]
         }
