@@ -111,7 +111,16 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/images/icon.png', fit: BoxFit.cover),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              alignment: Alignment.centerLeft,
+              fit: BoxFit.fitHeight,
+              image: AssetImage('assets/images/icon.png'),
+            ),
+          ),
+        ),
+        backgroundColor: theme.tertiary,
       ),
       body: Column(
         children: [

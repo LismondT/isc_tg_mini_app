@@ -149,7 +149,7 @@
             {
               "count": 10,
               "min_health": 4,
-              "max_health": 6,
+              "max_health": 5,
               "movement": "zigzag"
             },
             {
@@ -184,8 +184,8 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 5,
-              "max_health": 7,
+              "min_health": 3,
+              "max_health": 5,
               "movement": "circle"
             }
           ]
@@ -214,8 +214,8 @@
           "enemies": [
             {
               "count": 18,
-              "min_health": 4,
-              "max_health": 6,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "sine"
             }
           ]
@@ -232,8 +232,8 @@
           "enemies": [
             {
               "count": 12,
-              "min_health": 6,
-              "max_health": 8,
+              "min_health": 4,
+              "max_health": 6,
               "movement": "line"
             }
           ]
@@ -268,8 +268,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 5,
-              "max_health": 7,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "zigzag"
             }
           ]
@@ -280,8 +280,8 @@
           "enemies": [
             {
               "count": 12,
-              "min_health": 7,
-              "max_health": 9,
+              "min_health": 4,
+              "max_health": 6,
               "movement": "sine"
             }
           ]
@@ -298,14 +298,14 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 3,
+              "max_health": 5,
               "movement": "circle"
             },
             {
               "count": 8,
-              "min_health": 4,
-              "max_health": 6,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "sine"
             },
             {
@@ -328,8 +328,8 @@
           "enemies": [
             {
               "count": 20,
-              "min_health": 5,
-              "max_health": 7,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "line"
             }
           ]
@@ -340,8 +340,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 6,
-              "max_health": 8,
+              "min_health": 3,
+              "max_health": 6,
               "movement": "sine"
             }
           ]
@@ -352,8 +352,8 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 3,
+              "max_health": 5,
               "movement": "circle"
             }
           ]
@@ -370,14 +370,14 @@
           "enemies": [
             {
               "count": 25,
-              "min_health": 6,
-              "max_health": 8,
+              "min_health": 2,
+              "max_health": 4,
               "movement": "zigzag"
             },
             {
               "count": 5,
-              "min_health": 10,
-              "max_health": 12,
+              "min_health": 5,
+              "max_health": 6,
               "movement": "line"
             }
           ]
@@ -394,8 +394,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 9,
-              "max_health": 12,
+              "min_health": 5,
+              "max_health": 7,
               "movement": "circle"
             }
           ]
@@ -406,8 +406,8 @@
           "enemies": [
             {
               "count": 12,
-              "min_health": 7,
-              "max_health": 9,
+              "min_health": 3,
+              "max_health": 6,
               "movement": "sine"
             }
           ]
@@ -418,8 +418,8 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 5,
-              "max_health": 7,
+              "min_health": 3,
+              "max_health": 6,
               "movement": "zigzag"
             }
           ]
@@ -436,8 +436,8 @@
           "enemies": [
             {
               "count": 30,
-              "min_health": 4,
-              "max_health": 6,
+              "min_health": 1,
+              "max_health": 2,
               "movement": "sine"
             }
           ]
@@ -454,8 +454,8 @@
           "enemies": [
             {
               "count": 20,
-              "min_health": 10,
-              "max_health": 12,
+              "min_health": 4,
+              "max_health": 5,
               "movement": "line"
             }
           ]
@@ -466,8 +466,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 4,
+              "max_health": 5,
               "movement": "circle"
             }
           ]
@@ -484,20 +484,20 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 12,
-              "max_health": 15,
+              "min_health": 4,
+              "max_health": 5,
               "movement": "zigzag"
             },
             {
               "count": 15,
-              "min_health": 7,
-              "max_health": 9,
+              "min_health": 4,
+              "max_health": 6,
               "movement": "sine"
             },
             {
               "count": 8,
-              "min_health": 5,
-              "max_health": 7,
+              "min_health": 2,
+              "max_health": 3,
               "movement": "circle"
             }
           ]
@@ -514,8 +514,8 @@
           "enemies": [
             {
               "count": 25,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 2,
+              "max_health": 3,
               "movement": "sine"
             }
           ]
@@ -526,8 +526,8 @@
           "enemies": [
             {
               "count": 20,
-              "min_health": 10,
-              "max_health": 12,
+              "min_health": 2,
+              "max_health": 4,
               "movement": "zigzag"
             }
           ]
@@ -538,8 +538,8 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 15,
-              "max_health": 18,
+              "min_health": 1,
+              "max_health": 3,
               "movement": "line"
             }
           ]
@@ -556,8 +556,8 @@
           "enemies": [
             {
               "count": 30,
-              "min_health": 6,
-              "max_health": 8,
+              "min_health": 2,
+              "max_health": 4,
               "movement": "circle"
             }
           ]
@@ -568,8 +568,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 12,
-              "max_health": 15,
+              "min_health": 3,
+              "max_health": 4,
               "movement": "sine"
             }
           ]
@@ -586,14 +586,14 @@
           "enemies": [
             {
               "count": 20,
-              "min_health": 15,
-              "max_health": 18,
+              "min_health": 1,
+              "max_health": 4,
               "movement": "line"
             },
             {
               "count": 10,
-              "min_health": 10,
-              "max_health": 12,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "zigzag"
             }
           ]
@@ -610,8 +610,8 @@
           "enemies": [
             {
               "count": 25,
-              "min_health": 12,
-              "max_health": 14,
+              "min_health": 2,
+              "max_health": 4,
               "movement": "sine"
             }
           ]
@@ -622,8 +622,8 @@
           "enemies": [
             {
               "count": 20,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 3,
+              "max_health": 5,
               "movement": "circle"
             }
           ]
@@ -634,8 +634,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 18,
-              "max_health": 20,
+              "min_health": 4,
+              "max_health": 6,
               "movement": "zigzag"
             }
           ]
@@ -652,8 +652,8 @@
           "enemies": [
             {
               "count": 35,
-              "min_health": 10,
-              "max_health": 12,
+              "min_health": 4,
+              "max_health": 7,
               "movement": "line"
             }
           ]
@@ -664,8 +664,8 @@
           "enemies": [
             {
               "count": 20,
-              "min_health": 15,
-              "max_health": 18,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "sine"
             }
           ]
@@ -682,20 +682,20 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 20,
-              "max_health": 22,
+              "min_health": 3,
+              "max_health": 6,
               "movement": "circle"
             },
             {
               "count": 20,
-              "min_health": 12,
-              "max_health": 14,
+              "min_health": 3,
+              "max_health": 5,
               "movement": "zigzag"
             },
             {
               "count": 10,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 1,
+              "max_health": 3,
               "movement": "sine"
             }
           ]
@@ -712,8 +712,8 @@
           "enemies": [
             {
               "count": 40,
-              "min_health": 8,
-              "max_health": 10,
+              "min_health": 1,
+              "max_health": 3,
               "movement": "sine"
             }
           ]
@@ -724,8 +724,8 @@
           "enemies": [
             {
               "count": 25,
-              "min_health": 15,
-              "max_health": 18,
+              "min_health": 2,
+              "max_health": 5,
               "movement": "circle"
             }
           ]
@@ -736,8 +736,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 22,
-              "max_health": 25,
+              "min_health": 5,
+              "max_health": 7,
               "movement": "line"
             }
           ]
@@ -748,8 +748,8 @@
           "enemies": [
             {
               "count": 10,
-              "min_health": 18,
-              "max_health": 20,
+              "min_health": 5,
+              "max_health": 7,
               "movement": "zigzag"
             }
           ]
@@ -766,8 +766,8 @@
           "enemies": [
             {
               "count": 30,
-              "min_health": 15,
-              "max_health": 18,
+              "min_health": 4,
+              "max_health": 5,
               "movement": "zigzag"
             }
           ]
@@ -778,8 +778,8 @@
           "enemies": [
             {
               "count": 25,
-              "min_health": 20,
-              "max_health": 22,
+              "min_health": 5,
+              "max_health": 6,
               "movement": "sine"
             }
           ]
@@ -790,8 +790,8 @@
           "enemies": [
             {
               "count": 15,
-              "min_health": 25,
-              "max_health": 28,
+              "min_health": 4,
+              "max_health": 6,
               "movement": "circle"
             }
           ]

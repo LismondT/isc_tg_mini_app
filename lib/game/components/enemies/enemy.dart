@@ -25,7 +25,7 @@ class Enemy extends SpriteComponent
   final double speed;
   bool isRight = false;
 
-  static const enemySize = 25.0;
+  static const enemySize = 40.0;
   int health;
   bool isHit = false;
   final double knockbackForce = 10.0;
@@ -109,17 +109,10 @@ class Enemy extends SpriteComponent
   void _move(double dt) {
     switch (movement) {
       case 'circle':
-        // Обновляем угол для движения по кругу
         _circleAngle += dt * _circleSpeed;
-
-        // Вычисляем новую позицию на окружности
         final newX = _circleCenter.x + _circleRadius * cos(_circleAngle);
         final newY = _circleCenter.y + _circleRadius * sin(_circleAngle);
-
-        // Применяем новую позицию
         position.setValues(newX, newY);
-
-        // Центр круга медленно движется вниз
         _circleCenter.y += dt * speed / 3;
         break;
       case 'sine':

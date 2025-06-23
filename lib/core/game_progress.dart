@@ -14,14 +14,11 @@ class GameProgress with ChangeNotifier {
     if (level > _highestLevelCompleted) {
       _highestLevelCompleted = level;
     }
+
     if (_currentLevel <= _totalLevels) {
       _currentLevel++;
     }
 
     notifyListeners();
-
-    if (isWin) {
-      Globals.isWin = true;
-    }
   }
 }
