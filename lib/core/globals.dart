@@ -18,12 +18,21 @@ class Globals {
   }
 
   static Future<void> _loadGlobals() async {
-    final rawJson = await rootBundle.loadString('assets/config/config.json');
-    final Map<String, dynamic> json = jsonDecode(rawJson);
-    final data = _Data.fromJson(json);
-
-    phrase = data.phrase!;
-    promoCode = data.promoCode!;
+    try {
+      // Пробуем загрузить из внешнего источника (актуальная версия)
+      final response = await Dio().get('/config/config.json');
+      final data = _Data.fromJson(response.data);
+      phrase = data.phrase!;
+      promoCode = data.promoCode!;
+    } catch (e) {
+      // Fallback к bundled версии если внешняя недоступна
+      print('Failed to load external config, using bundled version: $e');
+      final rawJson = await rootBundle.loadString('assets/config/config.json');
+      final Map<String, dynamic> json = jsonDecode(rawJson);
+      final data = _Data.fromJson(json);
+      phrase = data.phrase!;
+      promoCode = data.promoCode!;
+    }
   }
 }
 
